@@ -2,14 +2,17 @@
 	<head>
 		<style>
 		.test {
-		background-color:yellow;
+		background-color:black;
 		font-size:20px;
-		width:50px;
-		height:30px;
-		position:fixed;
+		width:20px;
+		height:20px;
+		border-radius:30px;
+		position:absolute;
 		font-family: "RobotoMono", 'Times New Roman', Times, serif;
 		}
 		.text {
+		text-align: center;
+		margin:0 0;
 		font-size:200px;
 		font-family: "RobotoMono", 'Times New Roman', Times, serif;		
 		}
@@ -20,12 +23,15 @@
 		</style>
 	</head>
 	<body onload="start()">
-		<p class="test"></p>
-		<p class="r">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
 		<p class="text">text</p>
+		<div style="height:20px; width:50%; margin:0 auto;">
+			<div class="test"></div>
+			<div style="height:5px; background-color:black; margin:auto; top:50%; position:relative;  -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
+		</div>
+		<p class="r">0,0</p>
 		
 		<script>
-		var x=0,y=0;
+		var x=0;
 		function start() {
 			var id = setInterval(loop, 10);
 			var t=100,sldr=100,r=0,lvl=0;
@@ -42,8 +48,8 @@
 					sldr=-Math.cos(t/100*Math.PI)*50+50;
 				}
 				document.getElementsByClassName("text")[0].style.fontWeight=sldr*8;
-				document.getElementsByClassName("test")[0].innerHTML=sldr;
-				document.getElementsByClassName("test")[0].style.marginLeft=sldr;
+				//document.getElementsByClassName("test")[0].innerHTML=sldr;
+				document.getElementsByClassName("test")[0].style.left=sldr/2+25+"%";
 				if(t==0 || t==100) {
 					r++;
 					document.getElementsByClassName("r")[0].innerHTML=r+", "+lvl;
@@ -53,7 +59,6 @@
 		}
 		function mousetrack() {
 			x=event.clientX;
-			y=event.clientY;
 		}
 		</script>
 	</body>
