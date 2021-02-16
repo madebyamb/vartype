@@ -1,0 +1,60 @@
+<html onmousemove="mousetrack()">
+	<head>
+		<style>
+		.test {
+		background-color:yellow;
+		font-size:20px;
+		width:50px;
+		height:30px;
+		position:fixed;
+		font-family: "RobotoMono", 'Times New Roman', Times, serif;
+		}
+		.text {
+		font-size:200px;
+		font-family: "RobotoMono", 'Times New Roman', Times, serif;		
+		}
+		@font-face {
+		font-family: "RobotoMono";
+		src: url("RobotoMono-Italic-VariableFont_wght.ttf");
+		}
+		</style>
+	</head>
+	<body onload="start()">
+		<p class="test"></p>
+		<p class="r">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+		<p class="text">text</p>
+		
+		<script>
+		var x=0,y=0;
+		function start() {
+			var id = setInterval(loop, 10);
+			var t=100,sldr=100,r=0,lvl=0;
+			function loop() {
+				lvl=Math.floor(x/1000);
+					if(r%2==0 && t>=0 || t>100) {
+						t-=1;
+					} else {
+						t+=1;
+					}
+				if(lvl==0) {
+					sldr=t;
+				} else {
+					sldr=-Math.cos(t/100*Math.PI)*50+50;
+				}
+				document.getElementsByClassName("text")[0].style.fontWeight=sldr*8;
+				document.getElementsByClassName("test")[0].innerHTML=sldr;
+				document.getElementsByClassName("test")[0].style.marginLeft=sldr;
+				if(t==0 || t==100) {
+					r++;
+					document.getElementsByClassName("r")[0].innerHTML=r+", "+lvl;
+				}
+				
+			}
+		}
+		function mousetrack() {
+			x=event.clientX;
+			y=event.clientY;
+		}
+		</script>
+	</body>
+</html>
