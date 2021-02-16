@@ -1,4 +1,4 @@
-<html onmousemove="mousetrack()">
+<html>
 	<head>
 		<style>
 		.slider {
@@ -31,11 +31,13 @@
 		<p class="r">0,0</p>
 		
 		<script>
-		var x=0,k=false;
+		var k=false;
 		function start() {
 			var id = setInterval(loop, 10);
 			var t=0,sldr=0,r=0,lvl=0;
 			function loop() {
+				
+				//lvl=Math.floor(x/1000);
 				if(k) {
 					lvl++;
 					k=false;
@@ -57,9 +59,6 @@
 					}
 				}
 			}
-		}
-		function mousetrack() {
-			x=event.clientX;
 		}
 		function keyPressed() {
 			k=true;
