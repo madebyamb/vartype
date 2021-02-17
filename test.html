@@ -1,0 +1,85 @@
+<html onclick="keyPressed()">
+	<head>
+		<style>
+		.slider {
+		background-color:black;
+		font-size:20px;
+		width:20px;
+		height:20px;
+		border-radius:30px;
+		position:absolute;
+		font-family: "RobotoMono", 'Times New Roman', Times, serif;
+		}
+		.text {
+		display:none;
+		text-align: center;
+		margin:0 0;
+		font-size:200px;
+		font-family: "RobotoMono", 'Times New Roman', Times, serif;		
+		}
+		@font-face {
+		font-family: "RobotoMono";
+		src: url("fonts/RobotoMono-Italic-VariableFont_wght.ttf");
+		}
+		</style>
+	</head>
+	<body onload="start()" onkeydown="keyPressed()">
+		<p class="text" style="display:block;">text1</p>
+		<p class="text">text2</p>
+		<p class="text">text3</p>
+		<p class="text">text4</p>
+		<div style="height:20px; width:50%; margin:0 auto;">
+			<div class="slider"></div>
+			<div style="height:5px; background-color:black; margin:auto; top:50%; position:relative;  -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
+		</div>
+		<div style="height:20px; width:50%; margin:20 auto;">
+			<div class="slider"></div>
+			<div style="height:5px; background-color:black; margin:auto; top:50%; position:relative;  -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
+		</div>
+		<p class="r">0,0</p>
+		
+		<script>
+		var k=false;
+		function start() {
+			var id = setInterval(loop, 10);
+			var t=0,sldr=0,r=0,lvl=0,step=0,score=[],wait=0;
+			function loop() {
+				if(k && wait==0) {
+					//score.append(0);
+					r=0;
+					t=0;
+					wait++;
+					
+				}
+				if(wait==0) {
+					t++;
+					r=Math.floor(t/100);
+					sldr=-Math.cos(t/100*Math.PI)*50+50;
+					document.getElementsByClassName("text")[step].style.fontWeight=sldr*8;
+					document.getElementsByClassName("slider")[0].style.left=sldr/2.1+25+"%";
+				} else {
+					wait++;
+					if(wait==50) {
+						document.getElementsByClassName("text")[step].style.display="none";
+						step++;
+						if(step==4) {
+							lvl++;
+							step=0
+						}
+						document.getElementsByClassName("text")[step].style.display="block";
+					}
+					if(wait==100) {
+						
+						wait=0;
+						k=false;
+					}
+				}
+				document.getElementsByClassName("r")[0].innerHTML=r+", "+step+", "+lvl+", "+wait+", "+k;
+			}
+		}
+		function keyPressed() {
+			k=true;
+		}
+		</script>
+	</body>
+</html>
