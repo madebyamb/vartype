@@ -21,17 +21,18 @@ h2{
     text-align: center;
     font-size: 12vw;
     margin: 5% auto;
-	color: white;
     font-family: "RobotoMono", 'Times New Roman', Times, serif;
 
 	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: black;
+	-webkit-text-stroke-color: white;
 	left:0;
 	right:0;
+	top:0;
 	text-align:center;
+	mix-blend-mode: difference;
 }
 .affiche {
-	position:absolute;
+	position:relative;
     display:block;
 	text-align:center;
     text-align: center;
