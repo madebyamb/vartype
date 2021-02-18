@@ -11,46 +11,61 @@
 
         </header>
         <div>
-		    <p class="text">x-height</p>
+		    <p class="text" style="display:block;">x-height1</p>
+		    <p class="text">x-height2</p>
+		    <p class="text">x-height3</p>
+		    <p class="text">x-height4</p>
 		    <div style="height:20px; width:70%; margin:0 auto;">
 			    <div style="height:5px; border-radius:5px; background-color:black; margin:auto; top:75%; position:relative; -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
 			    <div class="slider"></div>
 		    </div>
             <p class="currant">Hit <strong>(spacebar)</strong><br>to validate</p>
-		    <p class="r">0,0</p>
+			<p class="r">0,0</p>
+			<p class="r">score</p>	
         </div>
 		
 		<script>
 		var k=false;
-		function start() {
-			var id = setInterval(loop, 10);
-			var t=0,sldr=0,r=0,lvl=0;
-			function loop() {
+		var id = setInterval(loop, 10);
+		var t=0,sldr=0,r=1,lvl=0,step=0,score=[],wait=0,prm=50;
+		function loop() {
+			if(k && wait==0) {
+				score.push(Math.floor(Math.abs(sldr-prm)*r));
+				document.getElementsByClassName("r")[1].innerHTML=score;
+				t=0;
+				wait++;
 				
-				//lvl=Math.floor(x/1000);
-				if(k) {
-					lvl++;
-					k=false;
-					//r=0;
-					//t=0;
 				}
-				if((lvl%2)==0) {
-					if(r%2==0 && t>=0 || t>100) {
-						t-=1;
-					} else {
-						t+=1;
+			if(wait==0) {
+				t++;
+				r=Math.floor(t/100)+1;
+				sldr=-Math.cos(t/100*Math.PI)*50+50;
+				document.getElementsByClassName("text")[step].style.fontWeight=sldr*6+100;
+				document.getElementsByClassName("slider")[0].style.marginLeft=sldr+"%";
+			} else {
+				wait++;
+				if(wait==50) {
+					document.getElementsByClassName("text")[step].style.display="none";
+					step++;
+					if(step==4) {
+						lvl++;
+						step=0
 					}
-					sldr=-Math.cos(t/100*Math.PI)*50+50;
-					document.getElementsByClassName("text")[0].style.fontWeight=sldr*8;
-					document.getElementsByClassName("slider")[0].style.marginLeft=sldr+"%";
-					if(t==0 || t==100) {
-						r++;
-						document.getElementsByClassName("r")[0].innerHTML=r+", "+lvl;
+					document.getElementsByClassName("text")[step].style.display="block";
+					prm= (document.getElementsByClassName("text")[step].style.fontWeight-100)/6;
 					}
+				if(wait==100) {
+					
+					wait=0;
+					k=false;
 				}
 			}
+			document.getElementsByClassName("r")[0].innerHTML=r+", "+step+", "+prm+", "+sldr;
 		}
 		function keyPressed() {
+			if(event.key=="Escape") {
+				clearInterval(id);
+			}
 			k=true;
 		}
 		</script>
