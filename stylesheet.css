@@ -9,6 +9,17 @@ body{
 header{
     margin: 1% 5%;
 }
+.main{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+}
 .slider {
     background-color:black;
     width:20px;
@@ -67,9 +78,10 @@ header{
     flex-direction: column;
     align-items: center;
     flex-wrap: nowrap;
-    max-width: 40%;
+    width: 40%;
     min-width: 300px;
     margin: 0 auto;
+    max-height: 80%;
 }
 .aligncenter{
     text-align: center;
