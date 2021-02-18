@@ -11,10 +11,13 @@
 
         </header>
         <div>
-		    <p class="text" style="display:block;">x-height1</p>
-		    <p class="text">x-height2</p>
-		    <p class="text">x-height3</p>
-		    <p class="text">x-height4</p>
+			<div style="height:50%;">
+				<p class="text">x-height1</p>
+				<p class="text">x-height2</p>
+				<p class="text">x-height3</p>
+				<p class="text">x-height4</p>
+				<p class="affiche"><p>
+			</div>
 		    <div style="height:20px; width:70%; margin:0 auto;">
 			    <div style="height:5px; border-radius:5px; background-color:black; margin:auto; top:75%; position:relative; -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
 			    <div class="slider"></div>
@@ -30,39 +33,44 @@
 		var t=0,sldr=0,r=1,lvl=0,step=3,score=[],wait=0,prm=50;
 		function loop() {
 			if(k && wait==0) {
-				score.push(Math.abs((1-Math.abs(sldr-prm)/100)/r)*100);
+				score.push(Math.floor((1-Math.abs(sldr-prm)/100)/r*100));
 				document.getElementsByClassName("r")[1].innerHTML=score;
 				t=0;
 				wait++;
-				document.getElementsByClassName("text")[step].style.display="none";
 				document.getElementsByClassName("slider")[0].style.opacity=0;
-				step++;
-				if(step==4) {
-					lvl++;
-					step=0
-				}
 				document.getElementsByClassName("text")[step].style.display="block";
-				document.getElementsByClassName("text")[step].style.opacity=0;
-				prm= (document.getElementsByClassName("text")[step].style.fontWeight-100)/6;
+
+
 			}
 			if(wait==0) {
 				t++;
 				r=Math.floor(t/100)+1;
 				sldr=-Math.cos(t/100*Math.PI)*50+50;
-				document.getElementsByClassName("text")[step].style.fontWeight=sldr*6+100;
+				document.getElementsByClassName("affiche")[0].style.fontWeight=sldr*6+100;
 				document.getElementsByClassName("slider")[0].style.marginLeft=sldr+"%";
 			} else {
 				wait++;
 				switch(wait) {
-					case 80:
-						document.getElementsByClassName("text")[step].style.opacity=255;
+					case 100:
+						document.getElementsByClassName("text")[step].style.display="none";
+						step++;
+						if(step==4) {
+							lvl++;
+							step=0
+						}
+						document.getElementsByClassName("affiche")[0].style.opacity=0;
+						document.getElementsByClassName("affiche")[0].fontFamily=document.getElementsByClassName("text")[step].style.fontFamily;
+						document.getElementsByClassName("affiche")[0].innerHTML=document.getElementsByClassName("text")[step].innerHTML;
+						prm= (document.getElementsByClassName("text")[step].style.fontWeight-100)/6;
+					case 180:
+						document.getElementsByClassName("affiche")[0].style.opacity=1;
 						break;
-					case 120:
-						document.getElementsByClassName("text")[step].style.opacity=0;
+					case 220:
+						document.getElementsByClassName("affiche")[0].style.opacity=0;
 						break;
-					case 200:
-						document.getElementsByClassName("text")[step].style.opacity=255;
-						document.getElementsByClassName("slider")[0].style.opacity=255;
+					case 300:
+						document.getElementsByClassName("affiche")[0].style.opacity=1;
+						document.getElementsByClassName("slider")[0].style.opacity=1;
 						wait=0;
 						k=false;
 						break;
