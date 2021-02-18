@@ -14,8 +14,10 @@ h2{
     width:20px;
     height:20px;
     border-radius:10px;
-    position:absolute;
     font-family: "RobotoMono", 'Times New Roman', Times, serif;
+	
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
 }
 .text {
     text-align: center;
