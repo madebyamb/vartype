@@ -34,8 +34,16 @@
 				document.getElementsByClassName("r")[1].innerHTML=score;
 				t=0;
 				wait++;
-				
+				document.getElementsByClassName("text")[step].style.display="none";
+				step++;
+				if(step==4) {
+					lvl++;
+					step=0
 				}
+				document.getElementsByClassName("text")[step].style.display="block";
+				document.getElementsByClassName("text")[step].style.opacity=0;
+				prm= (document.getElementsByClassName("text")[step].style.fontWeight-100)/6;
+			}
 			if(wait==0) {
 				t++;
 				r=Math.floor(t/100)+1;
@@ -44,20 +52,18 @@
 				document.getElementsByClassName("slider")[0].style.marginLeft=sldr+"%";
 			} else {
 				wait++;
-				if(wait==50) {
-					document.getElementsByClassName("text")[step].style.display="none";
-					step++;
-					if(step==4) {
-						lvl++;
-						step=0
-					}
-					document.getElementsByClassName("text")[step].style.display="block";
-					prm= (document.getElementsByClassName("text")[step].style.fontWeight-100)/6;
-					}
-				if(wait==100) {
-					
-					wait=0;
-					k=false;
+				switch(wait) {
+					case 80:
+						document.getElementsByClassName("text")[step].style.opacity=255;
+						break;
+					case 120:
+						document.getElementsByClassName("text")[step].style.opacity=0;
+						break;
+					case 200:
+						document.getElementsByClassName("text")[step].style.opacity=255;
+						wait=0;
+						k=false;
+						break;
 				}
 			}
 			document.getElementsByClassName("r")[0].innerHTML=r+", "+step+", "+prm+", "+sldr;
