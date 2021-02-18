@@ -35,6 +35,7 @@
 				t=0;
 				wait++;
 				document.getElementsByClassName("text")[step].style.display="none";
+				document.getElementsByClassName("slider")[0].style.opacity=0;
 				step++;
 				if(step==4) {
 					lvl++;
@@ -56,11 +57,12 @@
 					case 80:
 						document.getElementsByClassName("text")[step].style.opacity=255;
 						break;
-					case 200:
+					case 120:
 						document.getElementsByClassName("text")[step].style.opacity=0;
 						break;
 					case 200:
 						document.getElementsByClassName("text")[step].style.opacity=255;
+						document.getElementsByClassName("slider")[0].style.opacity=255;
 						wait=0;
 						k=false;
 						break;
