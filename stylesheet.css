@@ -16,11 +16,31 @@ h2{
 	transform: translateX(-50%);
 }
 .text {
+	position:absolute;
     display:none;
     text-align: center;
     font-size: 12vw;
     margin: 5% auto;
-    font-family: "RobotoMono", 'Times New Roman', Times, serif;		
+	color: white;
+    font-family: "RobotoMono", 'Times New Roman', Times, serif;
+
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+	left:0;
+	right:0;
+	text-align:center;
+}
+.affiche {
+	position:absolute;
+    display:block;
+	text-align:center;
+    text-align: center;
+    font-size: 12vw;
+    margin: 5% auto;
+    font-family: "RobotoMono", 'Times New Roman', Times, serif;	
+	left:0;
+	right:0;
+	text-align:center;
 }
 .currant{
     text-align: center;
