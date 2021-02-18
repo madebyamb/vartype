@@ -13,7 +13,7 @@
         <div>
 			<div>
 				<p class="affiche">0</p>
-				<p class="text" style="font-variation-settings:'wght' 100;">x-height1</p>
+				<p class="text" style="font-variation-settings:'wght' 100; font-family:'GT-Alpina-VAR-Trial';">x-height1</p>
 				<p class="text" style="font-variation-settings:'wght' 400;">x-height2</p>
 				<p class="text" style="font-variation-settings:'wght' 800;">x-height3</p>
 				<p class="text" style="font-variation-settings:'wght' 400;">x-height4</p>
@@ -31,9 +31,13 @@
 		var k=false;
 		var id = setInterval(loop, 10);
 		var t=-200,sldr,r,lvl=0,step=0,score=[],penalty=[],press=-1,prm=50,str,mode=0,fontvar;
+		var font=["font1",'"GT-Alpina-VAR-Trial"',"font2","font3"];
+		var fmin=[];
+		var fmax=[];
+		var fout;
 		function loop() {
-			document.getElementsByClassName("r")[0].innerHTML=r;
-			document.getElementsByClassName("r")[0].innerHTML=r+", "+mode+", "+press+", ";
+			//document.getElementsByClassName("r")[0].innerHTML=document.getElementsByClassName("text")[0].style.opacity;
+			//document.getElementsByClassName("r")[1].innerHTML=score;
 			switch(mode) {
 				case 0:
 					//Load Ready?
@@ -63,7 +67,6 @@
 					//Scoreboard
 					
 					break;
-					
 			}
 			function ready() {
 				t++;
@@ -84,12 +87,15 @@
 				switch(t) {
 					case -120:
 						//Get Font settings 
-						document.getElementsByClassName("affiche")[0].fontFamily=document.getElementsByClassName("text")[step].style.fontFamily;
+						document.getElementsByClassName("affiche")[0].style.fontFamily=document.getElementsByClassName("text")[step].style.fontFamily;
 						document.getElementsByClassName("affiche")[0].style.fontVariationSettings=document.getElementsByClassName("text")[step].style.fontVariationSettings;
 						document.getElementsByClassName("affiche")[0].innerHTML=document.getElementsByClassName("text")[step].innerHTML;
+						
 						fontvar=document.getElementsByClassName("text")[step].style.fontVariationSettings.split(" ")
 						prm= (fontvar[1]-100)/6;
+						fout=search(document.getElementsByClassName("text")[step].style.fontFamily);
 						fontvar=fontvar[0];
+						
 						//Flash On
 						document.getElementsByClassName("affiche")[0].style.opacity=1;
 						break;
@@ -103,7 +109,7 @@
 						document.getElementsByClassName("slider")[0].style.marginLeft=0+"%";
 						document.getElementsByClassName("slider")[0].style.opacity=1;
 						document.getElementsByClassName("currant")[0].style.opacity=1;
-						k=false
+						k=false;
 				}
 				
 				if(0<t) {
@@ -112,12 +118,10 @@
 						if(press==-1) {
 							//Save Score/Input Time
 							press=t;
-							score.push(Math.ceil(100-Math.abs(sldr-prm));
+							score.push(Math.ceil(100-Math.abs(sldr-prm)));
 							penalty.push(r)
 							document.getElementsByClassName("slider")[0].style.opacity=0;
 							document.getElementsByClassName("text")[step].style.display="block";
-
-							document.getElementsByClassName("r")[1].innerHTML=score;
 						}
 						if(press<t-100) {
 							//Reset & Advance Game
@@ -135,6 +139,14 @@
 						sldr=-Math.cos(t/100*Math.PI)*50+50;
 						document.getElementsByClassName("affiche")[0].style.fontVariationSettings="'wght'"+(sldr*6+100);
 						document.getElementsByClassName("slider")[0].style.marginLeft=sldr+"%";
+					}
+				}
+				function search(fnt) {
+					for(var i=0;i<font.length;i++) {
+						if(fnt==font[i]) {
+							document.getElementsByClassName("r")[0].innerHTML=i;
+							return i
+						}
 					}
 				}
 			}	
