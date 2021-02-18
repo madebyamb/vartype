@@ -12,7 +12,7 @@
         </header>
         <div>
 			<div>
-				<p class="affiche"></p>
+				<p class="affiche">0</p>
 				<p class="text" style="font-variation-settings:'wght' 100;">x-height1</p>
 				<p class="text" style="font-variation-settings:'wght' 400;">x-height2</p>
 				<p class="text" style="font-variation-settings:'wght' 800;">x-height3</p>
@@ -28,32 +28,61 @@
         </div>
 		
 		<script>
-		var k=true;
+		var k=false;
 		var id = setInterval(loop, 10);
-		var t=-200,sldr=0,r=1,lvl=0,step=3,score=[],press=-1,prm=50,str,mode=1;
+		var t=-200,sldr,r,lvl=0,step=0,score=[],press=-1,prm=50,str,mode=0;
 		function loop() {
 			document.getElementsByClassName("r")[0].innerHTML=r;
+			document.getElementsByClassName("r")[0].innerHTML=r+", "+mode+", "+press+", ";
 			switch(mode) {
 				case 0:
-					ready()
+					//Load Ready?
+					document.getElementsByClassName("affiche")[0].innerHTML="Ready?";
+					document.getElementsByClassName("affiche")[0].style.opacity=1;
+					document.getElementsByClassName("slider")[0].style.opacity=1;
+					document.getElementsByClassName("currant")[0].innerHTML="Press <strong>(spacebar)</strong><br>to start";
+					document.getElementsByClassName("currant")[0].style.opacity=1;
+					mode=1;
+					break;
 				case 1:
-					level();
+					//Wait Input
+					ready();
+					break;
+				case 2:
+					//Play Game
+					if(step==4) {
+						lvl++;
+						step=0;
+						mode=0;
+						k=false;
+					} else {
+						level();
+					}
 					break;
 					
 			}
 			function ready() {
-				
+				t++;
+				sldr=-Math.cos(t/100*Math.PI)*50+50;
+				document.getElementsByClassName("slider")[0].style.marginLeft=sldr+"%";
+				if(k==true) {
+					mode=2;
+					t=-200;
+					document.getElementsByClassName("affiche")[0].style.opacity=0;
+					document.getElementsByClassName("slider")[0].style.opacity=0;
+					document.getElementsByClassName("currant")[0].innerHTML="Hit <strong>(spacebar)</strong><br>to validate";
+					document.getElementsByClassName("currant")[0].style.opacity=0;
+				}
 			}
 			function level() {
 				//t=-200;
 				t++;
 				switch(t) {
-					case -199:
+					case -120:
+						//Flash On
 						document.getElementsByClassName("affiche")[0].fontFamily=document.getElementsByClassName("text")[step].style.fontFamily;
 						document.getElementsByClassName("affiche")[0].style.fontVariationSettings=document.getElementsByClassName("text")[step].style.fontVariationSettings;
 						document.getElementsByClassName("affiche")[0].innerHTML=document.getElementsByClassName("text")[step].innerHTML;
-					case -120:
-						//Flash On
 						document.getElementsByClassName("affiche")[0].style.opacity=1;
 						prm= (document.getElementsByClassName("text")[step].style.fontVariationSettings.split(" ")[1]-100)/6;
 						break;
@@ -62,6 +91,7 @@
 						document.getElementsByClassName("affiche")[0].style.opacity=0;
 						break;
 					case 0:
+						//Start Game
 						document.getElementsByClassName("affiche")[0].style.opacity=1;
 						document.getElementsByClassName("slider")[0].style.marginLeft=0+"%";
 						document.getElementsByClassName("slider")[0].style.opacity=1;
@@ -71,35 +101,34 @@
 				
 				if(0<t) {
 					if(k) {
+						//Wait Player Input
 						if(press==-1) {
+							//Save Score/Input Time
 							press=t;
 							score.push(Math.floor((100-Math.abs(sldr-prm))/r));
 							document.getElementsByClassName("slider")[0].style.opacity=0;
-							document.getElementsByClassName("currant")[0].style.opacity=0;
 							document.getElementsByClassName("text")[step].style.display="block";
 
 							document.getElementsByClassName("r")[1].innerHTML=score;
 						}
 						if(press<t-100) {
+							//Reset & Advance Game
 							document.getElementsByClassName("affiche")[0].style.opacity=0;
+							document.getElementsByClassName("currant")[0].style.opacity=0;
 							document.getElementsByClassName("text")[step].style.display="none";
 							step++;
-							if(step==4) {
-								lvl++;
-								step=0
-							}
 							press=-1;
 							t=-200;
 						}
 
 					} else {
+						//Move Game
 						r=Math.floor(t/100)+1;
 						sldr=-Math.cos(t/100*Math.PI)*50+50;
-						document.getElementsByClassName("affiche")[0].style.fontVariationSettings="'wght'"+sldr*6+100;
+						document.getElementsByClassName("affiche")[0].style.fontVariationSettings="'wght'"+(sldr*6+100);
 						document.getElementsByClassName("slider")[0].style.marginLeft=sldr+"%";
 					}
 				}
-				document.getElementsByClassName("r")[0].innerHTML=r+", "+step+", "+press+", "+t;
 			}	
 		}		
 		function keyPressed() {
