@@ -12,28 +12,28 @@
         </header>
         <div>
 			<div style="">
-				<p class="affiche"><p>
-				<p class="text">x-height1</p>
-				<p class="text">x-height2</p>
-				<p class="text">x-height3</p>
-				<p class="text">x-height4</p>
+				<p class="affiche"></p>
+				<p class="text" style="font-variation-settings:'wght' 100;">x-height1</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">x-height2</p>
+				<p class="text" style="font-variation-settings:'wght' 800;">x-height3</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">x-height4</p>
 			</div>
 		    <div style="height:20px; width:70%; margin:0 auto;">
 			    <div style="height:5px; border-radius:5px; background-color:black; margin:auto; top:75%; position:relative; -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
 			    <div class="slider"></div>
 		    </div>
             <p class="currant">Hit <strong>(spacebar)</strong><br>to validate</p>
-			<p class="r" style="position:absolute">0,0</p>
-			<p class="r" style="position:absolute">score</p>	
+			<p class="r" style="position:absolute; top:0; left:0;">0,0</p>
+			<p class="r" style="position:absolute; top:0; right:0;">score</p>	
         </div>
 		
 		<script>
 		var k=true;
 		var id = setInterval(loop, 10);
-		var t=0,sldr=0,r=1,lvl=0,step=3,score=[],wait=99,prm=50;
+		var t=0,sldr=0,r=1,lvl=0,step=3,score=[],wait=99,prm=50,str;
 		function loop() {
 			if(k && wait==0) {
-				score.push(Math.floor((1-Math.abs(sldr-prm)/100)/r*100));
+				score.push(Math.floor((100-Math.abs(sldr-prm))/r));
 				document.getElementsByClassName("r")[1].innerHTML=score;
 				t=0;
 				wait++;
@@ -62,8 +62,7 @@
 						document.getElementsByClassName("affiche")[0].style.fontVariationSettings=document.getElementsByClassName("text")[step].style.fontVariationSettings;
 						document.getElementsByClassName("affiche")[0].innerHTML=document.getElementsByClassName("text")[step].innerHTML;
 						document.getElementsByClassName("affiche")[0].style.opacity=0;
-						prm=50;
-						//prm= (document.getElementsByClassName("text")[step].style.fontVariationSettings-100)/6;
+						prm= (document.getElementsByClassName("text")[step].style.fontVariationSettings.split(" ")[1]-100)/6;
 						break;
 					case 180:
 						document.getElementsByClassName("affiche")[0].style.opacity=1;
