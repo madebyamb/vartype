@@ -20,6 +20,7 @@ h2{
 	transform: translateX(-50%);
 }
 .text {
+    display:none;
     text-align: center;
     font-size: 12vw;
     margin: 5% auto;
