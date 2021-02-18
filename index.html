@@ -25,9 +25,9 @@
         </div>
 		
 		<script>
-		var k=false;
+		var k=true;
 		var id = setInterval(loop, 10);
-		var t=0,sldr=0,r=1,lvl=0,step=0,score=[],wait=0,prm=50;
+		var t=0,sldr=0,r=1,lvl=0,step=3,score=[],wait=0,prm=50;
 		function loop() {
 			if(k && wait==0) {
 				score.push(Math.floor(Math.abs(sldr-prm)*r));
