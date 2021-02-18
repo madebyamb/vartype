@@ -23,8 +23,8 @@
 			    <div class="slider"></div>
 		    </div>
             <p class="currant">Hit <strong>(spacebar)</strong><br>to validate</p>
-			<p class="r">0,0</p>
-			<p class="r">score</p>	
+			<p class="r" style="position:absolute">0,0</p>
+			<p class="r" style="position:absolute">score</p>	
         </div>
 		
 		<script>
@@ -38,15 +38,15 @@
 				t=0;
 				wait++;
 				document.getElementsByClassName("slider")[0].style.opacity=0;
+				document.getElementsByClassName("currant")[0].style.opacity=0;
 				document.getElementsByClassName("text")[step].style.display="block";
-
 
 			}
 			if(wait==0) {
 				t++;
 				r=Math.floor(t/100)+1;
 				sldr=-Math.cos(t/100*Math.PI)*50+50;
-				document.getElementsByClassName("affiche")[0].style.fontWeight=sldr*6+100;
+				document.getElementsByClassName("affiche")[0].style.fontVariationSettings="'wght'"+sldr*6+100;
 				document.getElementsByClassName("slider")[0].style.marginLeft=sldr+"%";
 			} else {
 				wait++;
@@ -59,10 +59,11 @@
 							step=0
 						}
 						document.getElementsByClassName("affiche")[0].fontFamily=document.getElementsByClassName("text")[step].style.fontFamily;
-						document.getElementsByClassName("affiche")[0].style.fontWeight=document.getElementsByClassName("text")[step].style.fontWeight;
+						document.getElementsByClassName("affiche")[0].style.fontVariationSettings=document.getElementsByClassName("text")[step].style.fontVariationSettings;
 						document.getElementsByClassName("affiche")[0].innerHTML=document.getElementsByClassName("text")[step].innerHTML;
 						document.getElementsByClassName("affiche")[0].style.opacity=0;
-						prm= (document.getElementsByClassName("text")[step].style.fontWeight-100)/6;
+						prm=50;
+						//prm= (document.getElementsByClassName("text")[step].style.fontVariationSettings-100)/6;
 						break;
 					case 180:
 						document.getElementsByClassName("affiche")[0].style.opacity=1;
@@ -72,7 +73,9 @@
 						break;
 					case 300:
 						document.getElementsByClassName("affiche")[0].style.opacity=1;
+						document.getElementsByClassName("slider")[0].style.marginLeft=0+"%";
 						document.getElementsByClassName("slider")[0].style.opacity=1;
+						document.getElementsByClassName("currant")[0].style.opacity=1;
 						wait=0;
 						k=false;
 						break;
