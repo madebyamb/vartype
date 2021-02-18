@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" onclick="keyPressed()">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +13,8 @@
         <div>
 		    <p class="text">x-height</p>
 		    <div style="height:20px; width:70%; margin:0 auto;">
+			    <div style="height:5px; border-radius:5px; background-color:black; margin:auto; top:75%; position:relative; -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
 			    <div class="slider"></div>
-			    <div style="height:5px; border-radius:5px; background-color:black; margin:auto; top:50%; position:relative;  -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
 		    </div>
             <p class="currant">Hit <strong>(spacebar)</strong><br>to validate</p>
 		    <p class="r">0,0</p>
@@ -42,7 +42,7 @@
 					}
 					sldr=-Math.cos(t/100*Math.PI)*50+50;
 					document.getElementsByClassName("text")[0].style.fontWeight=sldr*8;
-					document.getElementsByClassName("slider")[0].style.left=sldr*0.70+15+"%";
+					document.getElementsByClassName("slider")[0].style.marginLeft=sldr+"%";
 					if(t==0 || t==100) {
 						r++;
 						document.getElementsByClassName("r")[0].innerHTML=r+", "+lvl;
