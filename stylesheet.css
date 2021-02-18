@@ -1,7 +1,4 @@
-@font-face {
-    font-family: "RobotoMono";
-    src: url("fonts/RobotoMono-VariableFont_wght.ttf");
-}
+
 body{
     background-color:white;
 }
@@ -15,7 +12,6 @@ h2{
     height:20px;
     border-radius:10px;
     font-family: "RobotoMono", 'Times New Roman', Times, serif;
-	
 	-ms-transform: translateX(-50%);
 	transform: translateX(-50%);
 }
@@ -32,4 +28,184 @@ h2{
     margin: 6% auto;
     font-family: "RobotoMono", 'Times New Roman', Times, serif;
     font-weight: 200;
+}
+@font-face {
+    font-family: "RobotoMono";
+    src: url("fonts/RobotoMono-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: "RobotoMono-Italic";
+    src: url("fonts/RobotoMono-Italic-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: "MovementV";
+    src: url("fonts/MovementV.ttf");
+}
+@font-face {
+    font-family: "Compressa";
+    src: url("fonts/Compressa-MICRO-GX-It.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/DTNASKH2.TTF");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/EBGaramond-Italic-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/EBGaramond-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT-Alpina-Italic-VAR-Trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT-Alpina-Typewriter-Italic-VAR-Trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT-Alpina-Typewriter-Italic-VAR-Trial.woff2");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT-Alpina-Typewriter-VAR-Trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT-Alpina-Typewriter-VAR-Trial.woff2");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT-Alpina-VAR-Trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT-Alpina-VAR-Trial.woff2");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT\ Flexa\ Mono\ VAR\ Trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT\ Flexa\ Mono\ VAR\ Trial.woff2");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT\ Flexa\ VAR\ Trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/GT\ Flexa\ VAR\ Trial.woff2");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Hagrid-Italic-Variable-trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Hagrid-Text-Italic-Variable-trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Hagrid-Text-Variable-trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Hagrid-Variable-trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Inter-VariableFont_slnt\,wght.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Jost-Italic-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Jost-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Minerale-Variable-Italic-TRIAL.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Minerale-variable-TRIAL.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/MolitorVariable-Trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/MolitorVariableItalic-Trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Oswald-VariableFont:wght.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Quicksand-VariableFont:wght.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Quicksand-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/RobotoMono-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/STIXVar.otf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/STIXVarBol.otf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/TRY_VesterbroVariable.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/TRY_VesterbroVariableItalic.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/VarelaRound-Regular.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Blacker-Sans-Display-Italic-Variable-trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Blacker-Sans-Pro-Italic-Variable-trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Blacker-Sans-Variable-trial.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/Comfortaa-VariableFont:wght.ttf");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts/");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts");
+}
+@font-face {
+    font-family: ;
+    src: url("fonts");
 }
