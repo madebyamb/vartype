@@ -8,6 +8,9 @@ body{
 }
 header{
     margin: 1% 5%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
 }
 .main{
     position: absolute;
@@ -28,20 +31,20 @@ header{
 	transform: translateX(-50%);
 }
 .text {
-	position:absolute;
+    position:absolute;
     bottom: 0;
     display:none;
     text-align: center;
     font-size: 12vw;
     margin: 5% auto;
     font-family: "RobotoMono", 'Times New Roman', Times, serif;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: white;
-	left:0;
-	right:0;
-	top:0;
-	text-align:center;
-	mix-blend-mode: difference;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    left:0;
+    right:0;
+    top:0;
+    text-align:center;
+    mix-blend-mode: difference;
 }
 .affiche {
 	position: absolute;
@@ -67,6 +70,17 @@ header{
     font-family: "RobotoMono", 'Times New Roman', Times, serif;
     font-weight: 200;
 }
+
+/*headers*/
+.headercollection {}
+
+.headersettings {}
+
+.headerscore {}
+
+.headerlevel {}
+
+.headerready {}
 
 /*score*/
 .containerscore{
@@ -115,11 +129,6 @@ header{
 .alignright{
     text-justify: right;
     margin: auto 0;
-}
-.containerheader{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
 }
 .elementsettings{
     display: flex;
