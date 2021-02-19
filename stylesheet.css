@@ -72,15 +72,21 @@ header{
 }
 
 /*headers*/
-.headercollection {}
-
-.headersettings {}
-
-.headerscore {}
-
-.headerlevel {}
-
-.headerready {}
+.headercollection {
+    display: none;
+}
+.headersettings {
+    display: none;
+}
+.headerscore {
+    display: none;
+}
+.headerlevel {
+    display: none;
+}
+.headerready {
+    display: flex;
+}
 
 /*score*/
 .containerscore{
