@@ -29,12 +29,12 @@ header{
 }
 .text {
 	position:absolute;
+    bottom: 0;
     display:none;
     text-align: center;
     font-size: 12vw;
     margin: 5% auto;
     font-family: "RobotoMono", 'Times New Roman', Times, serif;
-
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: white;
 	left:0;
@@ -44,7 +44,8 @@ header{
 	mix-blend-mode: difference;
 }
 .affiche {
-	position:relative;
+	position: absolute;
+    bottom: 0;
     display:block;
 	text-align:center;
     text-align: center;
@@ -54,6 +55,9 @@ header{
 	left:0;
 	right:0;
 	text-align:center;
+    transition:1s;
+    transition-property:opacity;
+
 }
 .currant{
     text-align: center;
