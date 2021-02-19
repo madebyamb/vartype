@@ -88,6 +88,27 @@ header{
     display: flex;
 }
 
+/*menu*/
+.niveaucard{ 
+    text-align: center; 
+}
+.element{
+    width: 30%;
+    height: 100px;
+    margin: 2% auto;
+    min-width: 140px;
+}
+.containermenu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 40%;
+    min-width: 300px;
+    margin: 0 auto;
+    max-height: 80%;
+}
+
 /*score*/
 .containerscore{
     display: flex;
