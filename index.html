@@ -299,7 +299,7 @@
 				for(var i=0;i<score.length;i++) {
 					document.getElementById("scoreboard").children[1].children[i].innerHTML=score[i]+"%";
 					document.getElementById("scoreboard").children[2].children[i].innerHTML=penalty[i]-1;
-					document.getElementById("scoreboard").children[3].children[i].innerHTML=score[i]/penalty[i]+"%";
+					document.getElementById("scoreboard").children[3].children[i].innerHTML=Math.ceil(score[i]/penalty[i])+"%";
 				}
 			}
 			function waitscore() {
