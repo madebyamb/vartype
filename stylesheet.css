@@ -18,8 +18,6 @@ header{
     display: flex;
     align-items: center;
 }
-
-}
 .slider {
     background-color:black;
     width:20px;
