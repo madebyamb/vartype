@@ -36,7 +36,7 @@
                 <p>score</p>
             </div>
         </div>
-        <div class="elementscore" style="display: flex;">
+        <div class="elementscore" style="display: flex;" id="scoreboard">
             <div>
                 <p>01</p>
                 <p>02</p>
@@ -295,7 +295,12 @@
 				document.getElementById("headscore").style.display="flex";
 				document.getElementById("score").style.display="block";
 				document.getElementById("game").style.filter= "blur(8px)";
-				document.getElementsByClassName("r")[0].innerHTML=t+" "+press;
+				document.getElementsByClassName("r")[0].innerHTML=score;
+				for(var i=0;i<score.length;i++) {
+					document.getElementById("scoreboard").children[1].children[i].innerHTML=score[i]+"%";
+					document.getElementById("scoreboard").children[2].children[i].innerHTML=penalty[i]-1;
+					document.getElementById("scoreboard").children[3].children[i].innerHTML=score[i]/penalty[i]+%;
+				}
 			}
 			function waitscore() {
 				if(k) {
@@ -303,6 +308,8 @@
 					document.getElementById("score").style.display="none";
 					document.getElementById("game").style.filter= "none";
 					mode=0;
+					score=[];
+					penalty=[];
 					k=false;
 				}
 			}
