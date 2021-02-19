@@ -54,6 +54,7 @@ header{
     font-family: "RobotoMono", 'Times New Roman', Times, serif;	
 	left:0;
 	right:0;
+	top:0;
 	text-align:center;
     transition:1s;
     transition-property:opacity;
