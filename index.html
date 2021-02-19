@@ -8,6 +8,7 @@
 </head>
     <body onload="start()" onkeydown="keyPressed()">
 
+
 		<header style="display:none;"id="headscore">
 		    <div class="element">
 			<p class="aligncenter"><strong> (c) </strong>to<br> collection </p>
@@ -123,16 +124,17 @@
 		    <div style="height:20px; width:70%; margin:0 auto;">
 			    <div style="height:5px; border-radius:5px; background-color:black; margin:auto; top:75%; position:relative; -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
 			    <div class="slider"></div>
+				<div style="height:20px; width:5px; border-radius:5px; background-color:black; margin:auto; top:75%; position:relative; -ms-transform: translateY(-50%);transform: translateY(-50%);" id="helper"></div>
 		    </div>
             <p class="currant" id="spacebar">Hit <strong>(spacebar)</strong><br>to validate</p>
-			<p class="r" style="position:absolute; top:0; left:0;">0,0</p>
+			<p class="r" style="position:absolute; top:0; left:0;"></p>
 		</div>
 		</div>
 		
 		<script>
 		var k=false;
 		var id = setInterval(loop, 10);
-		var t=0,sldr,r,lvl=0,step=0,score=[],penalty=[],press=-1000,prm=50,str,mode=0,fontvar;
+		var t=0,sldr,r,lvl=0,step=0,score=[],penalty=[],press=-1000,prm=50,str,mode=0,fontvar,totalscore;
 		var font=["font1",'"GT-Alpina-VAR-Trial"',"font2","font3"];
 		var fmin=[];
 		var fmax=[];
@@ -141,6 +143,8 @@
 			switch(mode) {
 				case 0:
 					//Load Ready?
+					document.getElementsByClassName("headerready")[0].style.display="flex";
+					document.getElementsByClassName("headerready")[0].children[1].children[0].innerHTML="Level "+lvl;
 					document.getElementsByClassName("affiche")[0].innerHTML="Ready?";
 					document.getElementsByClassName("affiche")[0].style.opacity=1;
 					document.getElementsByClassName("slider")[0].style.opacity=1;
@@ -154,25 +158,24 @@
 					break;
 				case 2:
 					//Play Game 0
-					if(step==2) {
-						lvl++;
-						step=0;
+					if(step==1&&lvl==0 || lvl==1&& step==3) {
 						mode++;
 						k=false;
-					} else {
-						level(false,2);
+					} else if(lvl==0 ||lvl==1) {
+						level(true,lvl);
 					}
 					break;
 				case 3:
 					//Load Scoreboard
 					scoreboard();
-					mode++;
-					k=false;
 					break;
 				case 4:
 					//Wait
 					waitscore();
 					break;
+				case 5:
+					mode=0;
+					lvl++;
 			}
 			function ready() {
 				t++;
@@ -185,11 +188,16 @@
 					document.getElementsByClassName("slider")[0].style.opacity=0;
 					document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";
 					document.getElementById("spacebar").style.opacity=0;
+					document.getElementsByClassName("headerlevel")[0].style.display="flex";
+					document.getElementsByClassName("headerready")[0].style.display="none";
 				}
 			}
 			function level(wait,flash) {
-				if(flash<2) {
+				if(flash<3) {
 					if(t==-200) {
+						if(flash==0) {
+							document.getElementById("helper").style.display="block";
+						}
 						//Get Font settings 
 						document.getElementsByClassName("affiche")[0].style.fontFamily=document.getElementsByClassName("text")[step].style.fontFamily;
 						document.getElementsByClassName("affiche")[0].style.fontVariationSettings=document.getElementsByClassName("text")[step].style.fontVariationSettings;
@@ -205,7 +213,7 @@
 						document.getElementById("spacebar").style.opacity=1;
 						document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
 					}	
-					if(flash==0 && t==0) {
+					if(flash<2 && t==0) {
 						document.getElementsByClassName("text")[step].style.display="block";
 						k=true;
 					}
@@ -222,7 +230,7 @@
 						t++;
 					}
 				}
-				if(flash==2) {
+				if(flash==3) {
 					t++;
 					switch(t) {
 						//t=-200;
@@ -268,13 +276,16 @@
 							k=false;
 						} else if(k) {
 							//Reset & Advance Game
-							document.getElementsByClassName("slider")[0].style.opacity=0;
+							if(flash==0) {
+								document.getElementById("helper").style.display="none";
+							}							document.getElementsByClassName("slider")[0].style.opacity=0;
 							document.getElementsByClassName("affiche")[0].style.opacity=0;
 							document.getElementById("spacebar").style.opacity=0;
 							document.getElementsByClassName("text")[step].style.display="none";
 							step++;
 							press=-1000;
 							t=-200;
+
 						} else if(press==-1000) {
 							//Move Game
 							r=Math.floor(t/100)+1;
@@ -300,18 +311,16 @@
 							
 							}
 						}
-						if(press==t-100 && wait==false) {
+						if(press==t-100) {
 							//Reset & Advance Game
 							document.getElementsByClassName("affiche")[0].style.opacity=0;
 							document.getElementById("spacebar").style.opacity=0;
 							document.getElementsByClassName("text")[step].style.display="none";
 							step++;
 							press=-1000;
-							if(flash==2) {
-								t=-200;
-							}
-							if(flash<2) {
-								t=-1;
+							t=-200;
+							if(flash==0) {
+								document.getElementById("helper").style.display="none";
 							}
 						}
 					}
@@ -325,25 +334,33 @@
 				}
 			}
 			function scoreboard() {
+				document.getElementsByClassName("headerlevel")[0].style.display="none";
 				document.getElementById("headscore").style.display="flex";
-				document.getElementById("score").style.display="absolute";
+				document.getElementById("score").style.display="block";
 				document.getElementById("game").style.filter= "blur(8px)";
-				document.getElementsByClassName("r")[0].innerHTML=score;
+				totalscore=0;
 				for(var i=0;i<score.length;i++) {
 					document.getElementById("scoreboard").children[1].children[i].innerHTML=score[i]+"%";
 					document.getElementById("scoreboard").children[2].children[i].innerHTML=penalty[i]-1;
 					document.getElementById("scoreboard").children[3].children[i].innerHTML=Math.ceil(score[i]/penalty[i])+"%";
+					totalscore+=Math.ceil(score[i]/penalty[i]);
 				}
+				totalscore/=score.length;
+				document.getElementById("scoreboard").parentElement.children[0].children[0].innerHTML=" Level "+lvl+" - <strong>"+totalscore+"%</strong>";
+				
+				mode++;
+				k=false;
 			}
 			function waitscore() {
 				if(k) {
 					document.getElementById("headscore").style.display="none";
+
 					document.getElementById("score").style.display="none";
 					document.getElementById("game").style.filter= "none";
-					mode=0;
 					score=[];
 					penalty=[];
 					k=false;
+					mode++;
 				}
 			}
 		}		
