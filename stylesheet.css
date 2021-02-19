@@ -63,6 +63,25 @@ header{
     font-weight: 200;
 }
 
+/*score*/
+.containerscore{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 70%;
+    min-width: 300px;
+    margin: 0 auto;
+    max-height: 80%;
+}
+.elementscore{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    color: black;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 /*settings*/
 .settingssize{
     margin-left: 10%;
