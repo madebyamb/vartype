@@ -7,10 +7,78 @@
     <link href="stylesheet.css" rel='stylesheet' type='text/css'>
 </head>
     <body onload="start()" onkeydown="keyPressed()">
-        <header>
 
-        </header>
-        <div class="main">
+<header class="containerheader" style="display:none;"id="headscore">
+    <div class="element">
+        <p class="aligncenter"><strong> (c) </strong>to<br> collection </p>
+    </div>
+    <div class="element">
+    <p class="aligncenter"><strong> (s) </strong>to<br> exit</p>
+    </div>
+</header>
+
+<div class="main" style="display:none"  id="score">
+    <div class="containerscore" class="settingssize">
+        <div class="elementscore">
+            <p class="currant"> Level 0 - <strong>100%</strong></p>
+        </div>
+        <div class="elementscore" style="display: flex;">
+            <div>
+                <p>steps</p>
+            </div>
+            <div>
+                <p>precision</p>
+            </div>
+            <div>
+                <p>reactivity</p>
+            </div>
+            <div>
+                <p>score</p>
+            </div>
+        </div>
+        <div class="elementscore" style="display: flex;">
+            <div>
+                <p>01</p>
+                <p>02</p>
+                <p>03</p>
+                <p>04</p>
+                <p>05</p>
+            </div>
+            <div>
+                <p>0%</p>
+                <p>0%</p>
+                <p>0%</p>
+                <p>0%</p>
+                <p>0%</p>
+            </div>
+            <div>
+                <p>0</p>
+                <p>0</p>
+                <p>0</p>
+                <p>0</p>
+                <p>0</p>
+            </div>
+            <div style="font-weight: 600;">
+                <p>0%</p>
+                <p>0%</p>
+                <p>0%</p>
+                <p>0%</p>
+                <p>0%</p>
+            </div>
+        </div>
+        <div style="height:5px; border-radius:5px; margin-top: 20px; background-color:black; top:75%; position:relative; -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
+        <div class="elementscore" style="text-align: center;margin-top:20px;display: flex; justify-content: space-evenly;">
+            <p>Press <strong>(erase)</strong><br> to try again</p>
+            <p>Press <strong>(spacebar)</strong><br> to start the<br> next level</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+         <div class="main" id="game">
 			<div style="width: 70%; margin:0 auto;">
 			<div style="height: 25vw; position: relative;">
 				<p class="affiche">0</p>
@@ -23,9 +91,8 @@
 			    <div style="height:5px; border-radius:5px; background-color:black; margin:auto; top:75%; position:relative; -ms-transform: translateY(-50%);transform: translateY(-50%);"></div>
 			    <div class="slider"></div>
 		    </div>
-            <p class="currant">Hit <strong>(spacebar)</strong><br>to validate</p>
+            <p class="currant" id="spacebar">Hit <strong>(spacebar)</strong><br>to validate</p>
 			<p class="r" style="position:absolute; top:0; left:0;">0,0</p>
-			<p class="r" style="position:absolute; top:0; right:0;">score</p>	
 		</div>
 		</div>
 		
@@ -38,16 +105,14 @@
 		var fmax=[];
 		var fout;
 		function loop() {
-			document.getElementsByClassName("r")[0].innerHTML=t+" "+press;
-			document.getElementsByClassName("r")[1].innerHTML=score;
 			switch(mode) {
 				case 0:
 					//Load Ready?
 					document.getElementsByClassName("affiche")[0].innerHTML="Ready?";
 					document.getElementsByClassName("affiche")[0].style.opacity=1;
 					document.getElementsByClassName("slider")[0].style.opacity=1;
-					document.getElementsByClassName("currant")[0].innerHTML="Press <strong>(spacebar)</strong><br>to start";
-					document.getElementsByClassName("currant")[0].style.opacity=1;
+					document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to start";
+					document.getElementById("spacebar").style.opacity=1;
 					mode=1;
 					break;
 				case 1:
@@ -55,19 +120,25 @@
 					ready();
 					break;
 				case 2:
-					//Play Game
-					if(step==4) {
+					//Play Game 0
+					if(step==2) {
 						lvl++;
 						step=0;
-						mode=0;
+						mode++;
 						k=false;
 					} else {
 						level(false,2);
 					}
 					break;
 				case 3:
-					//Scoreboard
-					
+					//Load Scoreboard
+					scoreboard();
+					mode++;
+					k=false;
+					break;
+				case 4:
+					//Wait
+					waitscore();
 					break;
 			}
 			function ready() {
@@ -79,8 +150,8 @@
 					t=-200;
 					document.getElementsByClassName("affiche")[0].style.opacity=0;
 					document.getElementsByClassName("slider")[0].style.opacity=0;
-					document.getElementsByClassName("currant")[0].innerHTML="Hit <strong>(spacebar)</strong><br>to validate";
-					document.getElementsByClassName("currant")[0].style.opacity=0;
+					document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";
+					document.getElementById("spacebar").style.opacity=0;
 				}
 			}
 			function level(wait,flash) {
@@ -98,8 +169,8 @@
 						t=0;
 						document.getElementsByClassName("affiche")[0].style.opacity=1;
 						k=false;
-						document.getElementsByClassName("currant")[0].style.opacity=1;
-						document.getElementsByClassName("currant")[0].innerHTML="Press <strong>(spacebar)</strong><br>to continue";
+						document.getElementById("spacebar").style.opacity=1;
+						document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
 					}	
 					if(flash==0 && t==0) {
 						document.getElementsByClassName("text")[step].style.display="block";
@@ -112,7 +183,7 @@
 						document.getElementsByClassName("affiche")[0].style.opacity=1;
 						document.getElementsByClassName("slider")[0].style.marginLeft=0+"%";
 						document.getElementsByClassName("slider")[0].style.opacity=1;
-						document.getElementsByClassName("currant")[0].innerHTML="Hit <strong>(spacebar)</strong><br>to validate";
+						document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";
 					}
 					if(t>0) {
 						t++;
@@ -145,8 +216,8 @@
 							document.getElementsByClassName("affiche")[0].style.opacity=1;
 							document.getElementsByClassName("slider")[0].style.marginLeft=0+"%";
 							document.getElementsByClassName("slider")[0].style.opacity=1;
-							document.getElementsByClassName("currant")[0].style.opacity=1;
-							document.getElementsByClassName("currant")[0].innerHTML="Hit <strong>(spacebar)</strong><br>to validate";
+							document.getElementById("spacebar").style.opacity=1;
+							document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";
 							k=false;
 					}
 				}
@@ -160,13 +231,13 @@
 							score.push(Math.ceil(100-Math.abs(sldr-prm)));
 							penalty.push(r)
 							document.getElementsByClassName("text")[step].style.display="block";
-							document.getElementsByClassName("currant")[0].innerHTML="Press <strong>(spacebar)</strong><br>to continue";
+							document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
 							k=false;
 						} else if(k) {
 							//Reset & Advance Game
 							document.getElementsByClassName("slider")[0].style.opacity=0;
 							document.getElementsByClassName("affiche")[0].style.opacity=0;
-							document.getElementsByClassName("currant")[0].style.opacity=0;
+							document.getElementById("spacebar").style.opacity=0;
 							document.getElementsByClassName("text")[step].style.display="none";
 							step++;
 							press=-1000;
@@ -199,7 +270,7 @@
 						if(press==t-100 && wait==false) {
 							//Reset & Advance Game
 							document.getElementsByClassName("affiche")[0].style.opacity=0;
-							document.getElementsByClassName("currant")[0].style.opacity=0;
+							document.getElementById("spacebar").style.opacity=0;
 							document.getElementsByClassName("text")[step].style.display="none";
 							step++;
 							press=-1000;
@@ -219,7 +290,22 @@
 						}
 					}
 				}
-			}	
+			}
+			function scoreboard() {
+				document.getElementById("headscore").style.display="flex";
+				document.getElementById("score").style.display="block";
+				document.getElementById("game").style.filter= "blur(8px)";
+				document.getElementsByClassName("r")[0].innerHTML=t+" "+press;
+			}
+			function waitscore() {
+				if(k) {
+					document.getElementById("headscore").style.display="none";
+					document.getElementById("score").style.display="none";
+					document.getElementById("game").style.filter= "none";
+					mode=0;
+					k=false;
+				}
+			}
 		}		
 		function keyPressed() {
 			if(event.key=="Escape") {
