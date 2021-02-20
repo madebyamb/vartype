@@ -115,53 +115,53 @@
 			<div style="width: 100%; margin:0 auto;">
 			<div style="height: 25vw; position: relative;">
 				<p class="affiche">0</p>
-				<div class="text">
-				<p style="font-variation-settings:'wght' 400;">monospace</p>
+				<div class="textpar">
+				<p class="text" style="font-variation-settings:'wght' 400;">monospace</p>
 				</div>
-				<div class="text">
-				<p style="font-variation-settings:'wght' 400;">serif</p>
-				<p style="font-variation-settings:'wght' 800;">garalde</p>
+				<div class="textpar">
+				<p class="text" style="font-variation-settings:'wght' 400;">serif</p>
+				<p class="text" style="font-variation-settings:'wght' 800;">garalde</p>
 				</div>
-				<div class="text">
-				<p style="font-variation-settings:'wght' 400;">sans serif</p>
-				<p style="font-variation-settings:'wght' 400;">rounded</p>
-				<p style="font-variation-settings:'wght' 400;">geometric</p>
+				<div class="textpar">
+				<p class="text" style="font-variation-settings:'wght' 400;">sans serif</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">rounded</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">geometric</p>
 				</div>
-				<div class="text">
-				<p style="font-variation-settings:'wght' 400;">original</p>
-				<p style="font-variation-settings:'wght' 400;">weird</p>
-				<p style="font-variation-settings:'wght' 400;">modular</p>
-				<p style="font-variation-settings:'wght' 400;">quircky</p>
+				<div class="textpar">
+				<p class="text" style="font-variation-settings:'wght' 400;">original</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">weird</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">modular</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">quircky</p>
 				</div>
-				<div class="text">
-				<p style="font-variation-settings:'wght' 400;">triangles</p>
-				<p style="font-variation-settings:'wght' 400;">stems</p>
-				<p style="font-variation-settings:'wght' 400;">french</p>
-				<p style="font-variation-settings:'wght' 400;">multiplexed</p>
+				<div class="textpar">
+				<p class="text" style="font-variation-settings:'wght' 400;">triangles</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">stems</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">french</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">multiplexed</p>
 				</div>
-				<div class="text">
-				<p style="font-variation-settings:'wght' 400;">screens</p>
-				<p style="font-variation-settings:'wght' 400;">readability</p>
-				<p style="font-variation-settings:'wght' 400;">open source</p>
-				<p style="font-variation-settings:'wght' 400;">grotesk</p>
+				<div class="textpar">
+				<p class="text" style="font-variation-settings:'wght' 400;">screens</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">readability</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">open source</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">grotesk</p>
 				</div>
-				<div class="text">
-				<p style="font-variation-settings:'wght' 400;">classy</p>
-				<p style="font-variation-settings:'wght' 400;">evilserif</p>
-				<p style="font-variation-settings:'wght' 400;">contrast</p>
-				<p style="font-variation-settings:'wght' 400;">style</p>
+				<div class="textpar">
+				<p class="text" style="font-variation-settings:'wght' 400;">classy</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">evilserif</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">contrast</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">style</p>
 				</div>
-				<div class="text">
-				<p style="font-variation-settings:'wght' 400;">unique</p>
-				<p style="font-variation-settings:'wght' 400;">responsivity</p>
-				<p style="font-variation-settings:'wght' 400;">adaptative</p>
-				<p style="font-variation-settings:'wght' 400;">system</p>
+				<div class="textpar">
+				<p class="text" style="font-variation-settings:'wght' 400;">unique</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">responsivity</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">adaptative</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">system</p>
 				</div>
-				<div class="text">
-				<p style="font-variation-settings:'wght' 400;">display</p>
-				<p style="font-variation-settings:'wght' 400;">vernacular</p>
-				<p style="font-variation-settings:'wght' 400;">straight sided</p>
-				<p style="font-variation-settings:'wght' 400;">legibility</p>
+				<div class="textpar">
+				<p class="text" style="font-variation-settings:'wght' 400;">display</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">vernacular</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">straight sided</p>
+				<p class="text" style="font-variation-settings:'wght' 400;">legibility</p>
 				</div>
 			</div>
 		    <div style="height:20px; width:70%; margin:0 auto;">
@@ -205,12 +205,12 @@
 						mode++;
 						k=false;
 					} else {
-						level((lvl<3),lvl);
+						level(lvl<3,lvl);
 					}
 					break;
 				case 3:
 					//Load Scoreboard
-					scoreboard();
+					scoreboard(lvl>1);
 					break;
 				case 4:
 					//Wait
@@ -247,13 +247,13 @@
 							document.getElementById("helper").style.display="block";
 						}
 						//Get Font settings 
-						document.getElementsByClassName("affiche")[0].style.fontFamily=document.getElementsByClassName("text")[lvl].children[step].style.fontFamily;
-						document.getElementsByClassName("affiche")[0].style.fontVariationSettings=document.getElementsByClassName("text")[lvl].children[step].style.fontVariationSettings;
-						document.getElementsByClassName("affiche")[0].innerHTML=document.getElementsByClassName("text")[lvl].children[step].innerHTML;
+						document.getElementsByClassName("affiche")[0].style.fontFamily=document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily;
+						document.getElementsByClassName("affiche")[0].style.fontVariationSettings=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings;
+						document.getElementsByClassName("affiche")[0].innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].innerHTML;
 						
-						fontvar=document.getElementsByClassName("text")[lvl].children[step].style.fontVariationSettings.split(" ")
+						fontvar=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings.split(" ")
 						prm= (fontvar[1]-100)/6;
-						//fout=search(document.getElementsByClassName("text")[lvl].children[step].style.fontFamily);
+						//fout=search(document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily);
 						fontvar=fontvar[0];
 						t=0;
 						document.getElementsByClassName("affiche")[0].style.opacity=1;
@@ -262,7 +262,7 @@
 						document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
 					}	
 					if(flash<2 && t==0) {
-						document.getElementsByClassName("text")[lvl].children[step].style.display="block";
+						document.getElementsByClassName("textpar")[lvl].children[step].style.display="block";
 						k=true;
 					}
 					if(t==0 && k) { 
@@ -278,19 +278,19 @@
 						t++;
 					}
 				}
-				if(flash==3) {
+				if(flash>2) {
 					t++;
 					switch(t) {
 						//t=-200;
 						case -120:
 							//Get Font settings 
-							document.getElementsByClassName("affiche")[0].style.fontFamily=document.getElementsByClassName("text")[lvl].children[step].style.fontFamily;
-							document.getElementsByClassName("affiche")[0].style.fontVariationSettings=document.getElementsByClassName("text")[lvl].children[step].style.fontVariationSettings;
-							document.getElementsByClassName("affiche")[0].innerHTML=document.getElementsByClassName("text")[lvl].children[step].innerHTML;
+							document.getElementsByClassName("affiche")[0].style.fontFamily=document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily;
+							document.getElementsByClassName("affiche")[0].style.fontVariationSettings=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings;
+							document.getElementsByClassName("affiche")[0].innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].innerHTML;
 							
-							fontvar=document.getElementsByClassName("text")[lvl].children[step].style.fontVariationSettings.split(" ")
+							fontvar=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings.split(" ")
 							prm= (fontvar[1]-100)/6;
-							fout=search(document.getElementsByClassName("text")[lvl].children[step].style.fontFamily);
+							fout=search(document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily);
 							fontvar=fontvar[0];
 							
 							//Flash On
@@ -319,21 +319,11 @@
 							press=t;
 							score.push(Math.ceil(100-Math.abs(sldr-prm)));
 							penalty.push(r)
-							document.getElementsByClassName("text")[lvl].children[step].style.display="block";
+							document.getElementsByClassName("textpar")[lvl].children[step].style.display="block";
 							document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
 							k=false;
 						} else if(k) {
-							//Reset & Advance Game
-							if(flash==0) {
-								document.getElementById("helper").style.display="none";
-							}							document.getElementsByClassName("slider")[0].style.opacity=0;
-							document.getElementsByClassName("affiche")[0].style.opacity=0;
-							document.getElementById("spacebar").style.opacity=0;
-							document.getElementsByClassName("text")[lvl].children[step].style.display="none";
-							step++;
-							press=-1000;
-							t=-200;
-
+							resetAdvance();
 						} else if(press==-1000) {
 							//Move Game
 							r=Math.floor(t/100)+1;
@@ -354,24 +344,28 @@
 								score.push(Math.ceil(100-Math.abs(sldr-prm)));
 								penalty.push(r)
 								document.getElementsByClassName("slider")[0].style.opacity=0;
-								document.getElementsByClassName("text")[lvl].children[step].style.display="block";
+								document.getElementsByClassName("textpar")[lvl].children[step].style.display="block";
 								k=false;
 							
 							}
 						}
 						if(press==t-100) {
-							//Reset & Advance Game
-							document.getElementsByClassName("affiche")[0].style.opacity=0;
-							document.getElementById("spacebar").style.opacity=0;
-							document.getElementsByClassName("text")[lvl].children[step].style.display="none";
-							step++;
-							press=-1000;
-							t=-200;
-							if(flash==0) {
-								document.getElementById("helper").style.display="none";
-							}
+							resetAdvance();
 						}
 					}
+				}
+				function resetAdvance() {
+					//Reset & Advance Game
+					if(flash==0) {
+						document.getElementById("helper").style.display="none";
+					}
+					document.getElementsByClassName("slider")[0].style.opacity=0;
+					document.getElementsByClassName("affiche")[0].style.opacity=0;
+					document.getElementById("spacebar").style.opacity=0;
+					document.getElementsByClassName("textpar")[lvl].children[step].style.display="none";
+					step++;
+					press=-1000;
+					t=-200;				
 				}
 				function search(fnt) {
 					for(var i=0;i<font.length;i++) {
@@ -381,13 +375,16 @@
 					}
 				}
 			}
-			function scoreboard() {
+			function scoreboard(bounce) {
 				document.getElementsByClassName("headerlevel")[0].style.display="none";
 				document.getElementById("headscore").style.display="flex";
 				document.getElementById("score").style.display="flex";
 				document.getElementById("game").style.filter= "blur(8px)";
 				totalscore=0;
 				for(var i=0;i<score.length;i++) {
+					if(bounce==false) {
+						penalty[i]=1;
+					}
 					document.getElementById("scoreboard").children[1].children[i].innerHTML=score[i]+"%";
 					document.getElementById("scoreboard").children[2].children[i].innerHTML=penalty[i]-1;
 					document.getElementById("scoreboard").children[3].children[i].innerHTML=Math.ceil(score[i]/penalty[i])+"%";
