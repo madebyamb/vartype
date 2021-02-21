@@ -1,4 +1,4 @@
-<html lang="en" onclick="keyPressed()" ontouchstart="touchScreen()">
+<html lang="en" onclick="Click()" ontouchstart="touchScreen()">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,7 +6,7 @@
     <title>VarType</title>
     <link href="stylesheet.css" rel='stylesheet' type='text/css'>
 </head>
-    <body onload="start()" onkeydown="keyPressed()">
+    <body onkeydown="keyboard()">
 
 		<header id="headerscore" class="header">
 		    <div>
@@ -57,7 +57,7 @@
 					<div class="textpar">
 					</div>
 					<div class="textpar">
-					<p class="text" style="font-variation-settings:'wght' 450;" id="RobotoMono">monospace</p>
+					<p class="text" style="font-variation-settings:'wght' 450;font-family: 'RobotoMono';">monospace</p>
 					</div>
 					<div class="textpar">
 					<p class="text" style="font-variation-settings:'wght' 400;font-family: 'EBGaramond-VariableFont_wght';">serif</p>
@@ -170,9 +170,9 @@
 		var k=false;
 		var id = setInterval(loop, 10);
 		var touch=false,t=0,sldr,r,lvl=1,step=0,score=[],penalty=[],press=-1000,prm=[],str,mode=0,fontvar,totalscore,waitinput=false;
-		var font=["RobotoMono","EBGaramond","Quicksand","Hagrid","Minerale","Inter","Blacker","GTFlexa","Compressa"];
-		var fmin=[[100],[400],[300],[100] ,[0   ],[100,-10],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
-		var fmax=[[800],[800],[700],[1000],[1000],[900,0  ],[499,1000],[200,800,100],[200,1000]];
+		var font=['"RobotoMono"','"RobotoMono-Italic"','"EBGaramond-VariableFont_wght"','"Quicksand-VariableFont_wght"','"Hagrid-Variable-trial"','"Minerale-variable-TRIAL"','"Inter Var"','"Blacker-Sans-Variable-trial"','"GT\ Flexa\ VAR\ Trial"','"Compressa"'];
+		var fmin=[[100],[100],[400],[300],[100] ,[0   ],[100,-10],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
+		var fmax=[[800],[800],[800],[700],[1000],[1000],[900,0  ],[499,1000],[200,800,100],[200,1000]];
 		var fout;
 		function loop() {
 			switch(mode) {
@@ -203,7 +203,6 @@
 					break;
 				case 5:
 					mode=0;
-					lvl++;
 					step=0;
 			}
 			function loadReady() {
@@ -226,7 +225,7 @@
 				t++;
 				sldr=-Math.cos(t/200*Math.PI)/2+.5;
 				document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";
-				if(k==true) {
+				if(k+"t"==" t") {
 					mode++;
 					t=-200;
 					document.getElementById("headerready").style.display="none";
@@ -242,7 +241,7 @@
 						loadFontSettings();
 						document.getElementById("affiche").style.opacity=1;
 						document.getElementsByClassName("slider")[0].style.opacity=0;
-						//k=false;
+						k=false;
 						document.getElementById("spacebar").style.opacity=1;
 						if(touch) {
 							document.getElementById("spacebar").innerHTML="Click the screen<br>to continue";
@@ -286,7 +285,7 @@
 					if(wait) {
 						if(press==-1000) {
 							moveGame();
-							if(k){
+							if(k+"t"==" t"){
 								//Wait Player Input
 								saveScore();
 								if(touch) {
@@ -304,7 +303,7 @@
 					else {
 						if(press==-1000) {
 							moveGame();
-							if(k) {
+							if(k+"t"==" t") {
 								saveScore();
 								document.getElementById("spacebar").style.opacity=0;
 							}
@@ -333,7 +332,7 @@
 					document.getElementById("affiche").style.fontVariationSettings=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings;
 					document.getElementById("affiche").innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].innerHTML;
 					
-					fout=searchFont(document.getElementsByClassName("textpar")[lvl].children[step].getAttribute("id"));
+					fout=searchFont(document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily);
 					fontvar= document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings.split(" ")
 					prm=[];
 					for(var i=0;i<fout[0].length;i++) {
@@ -361,7 +360,6 @@
 					r=Math.floor(t/200)+1;
 					sldr=-Math.cos(t/200*Math.PI)/2+.5;
 					document.getElementById("affiche").style.fontVariationSettings=fontvar+" "+(sldr*(fout[1][0]-fout[0][0])+fout[0][0]);
-					document.getElementsByClassName("r")[0].innerHTML=(sldr*(fout[1][0]-fout[0][0])+fout[0][0]);
 					document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";	
 				}
 				function saveScore() {
@@ -434,26 +432,36 @@
 				k=false;
 			}
 			function waitscore() {
-				if(k) {
+				if(k+"t"==" t" || k=="r" || k=="R") {
 					document.getElementById("headerscore").style.display="none";
 
 					document.getElementById("score").style.display="none";
 					document.getElementById("game").style.filter= "none";
 					score=[];
 					penalty=[];
+					if(k!="r") {
+						lvl++;
+					}
 					k=false;
 					mode++;
 				}
 			}
-		}		
-		function keyPressed() {
-			if(event.key=="Escape") {
+		}
+		function Click() {
+			keyPressed(" ");
+		}
+		function keyboard(event) {
+			keyPressed(event.key);
+		}
+		function keyPressed(key) {
+			if(key=="Escape") {
 				clearInterval(id);
 			} else if(waitinput) {
+				k=false;
 				id = setInterval(loop, 10);
 				waitinput=false;
 			} else {
-				k=true;
+				k=key;
 			}
 		}
 		function touchScreen() {
