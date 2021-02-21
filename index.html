@@ -333,13 +333,14 @@
 					document.getElementById("affiche").style.fontVariationSettings=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings;
 					document.getElementById("affiche").innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].innerHTML;
 					
-					fout=[[100],[800]];
+					fout=searchFont(document.getElementsByClassName("textpar")[lvl].children[step].getAttribute("id"));
 					fontvar= document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings.split(" ")
 					prm=[];
 					for(var i=0;i<fout[0].length;i++) {
 						prm.push((fontvar[1]-fout[0][i])/(fout[1][i]-fout[0][i]));
 					}
 					fontvar= fontvar[0];
+
 				}
 				
 				function startGame() {
@@ -359,8 +360,8 @@
 					//Move Game
 					r=Math.floor(t/200)+1;
 					sldr=-Math.cos(t/200*Math.PI)/2+.5;
-					document.getElementsByClassName("r")[0].innerHTML=t+" "+prm;
 					document.getElementById("affiche").style.fontVariationSettings=fontvar+" "+(sldr*(fout[1][0]-fout[0][0])+fout[0][0]);
+					document.getElementsByClassName("r")[0].innerHTML=(sldr*(fout[1][0]-fout[0][0])+fout[0][0]);
 					document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";	
 				}
 				function saveScore() {
@@ -386,7 +387,7 @@
 			function searchFont(fnt) {
 				for(var i=0;i<font.length;i++) {
 					if(fnt==font[i]) {
-						return [fmin[i],fmax[i]]
+						return [fmin[i],fmax[i]];
 					}
 				}
 			}
