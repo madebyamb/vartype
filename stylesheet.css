@@ -7,7 +7,7 @@ body{
     overflow: hidden;
 }
 header{
-    margin: 1% 5%;
+    margin: 20px;
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
