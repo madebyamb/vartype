@@ -46,7 +46,7 @@ header{
     text-align:center;
     mix-blend-mode: difference;
 }
-.affiche {
+#affiche {
 	position: absolute;
     bottom: 0;
     display:block;
@@ -72,20 +72,8 @@ header{
 }
 
 /*headers*/
-.headercollection {
+.header {
     display: none;
-}
-.headersettings {
-    display: none;
-}
-.headerscore {
-    display: none;
-}
-.headerlevel {
-    display: none;
-}
-.headerready {
-    display: flex;
 }
 
 /*menu*/
