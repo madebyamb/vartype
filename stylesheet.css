@@ -255,80 +255,16 @@ input[type=range] {
     src: url("fonts/RobotoMono-Italic-VariableFont_wght.ttf");
 }
 @font-face {
-    font-family: "MovementV";
-    src: url("fonts/MovementV.ttf");
-}
-@font-face {
     font-family: "Compressa";
     src: url("fonts/Compressa-MICRO-GX-It.ttf");
-}
-@font-face {
-    font-family: "DTNASKH2";
-    src: url("fonts/DTNASKH2.TTF");
-}
-@font-face {
-    font-family: "EBGaramond-Italic-VariableFont_wght";
-    src: url("fonts/EBGaramond-Italic-VariableFont_wght.ttf");
 }
 @font-face {
     font-family: "EBGaramond-VariableFont_wght";
     src: url("fonts/EBGaramond-VariableFont_wght.ttf");
 }
 @font-face {
-    font-family: "GT-Alpina-Italic-VAR-Trial" ;
-    src: url("fonts/GT-Alpina-Italic-VAR-Trial.ttf");
-}
-@font-face {
-    font-family: "GT-Alpina-Typewriter-Italic-VAR-Trial";
-    src: url("fonts/GT-Alpina-Typewriter-Italic-VAR-Trial.ttf");
-}
-@font-face {
-    font-family: "GT-Alpina-Typewriter-Italic-VAR-Trial" ;
-    src: url("fonts/GT-Alpina-Typewriter-Italic-VAR-Trial.woff2");
-}
-@font-face {
-    font-family: "GT-Alpina-Typewriter-VAR-Trial" ;
-    src: url("fonts/GT-Alpina-Typewriter-VAR-Trial.ttf");
-}
-@font-face {
-    font-family: "GT-Alpina-Typewriter-VAR-Trial" ;
-    src: url("fonts/GT-Alpina-Typewriter-VAR-Trial.woff2");
-}
-@font-face {
-    font-family: "GT-Alpina-VAR-Trial" ;
-    src: url("fonts/GT-Alpina-VAR-Trial.ttf");
-}
-@font-face {
-    font-family: "GT-Alpina-VAR-Trial";
-    src: url("fonts/GT-Alpina-VAR-Trial.woff2");
-}
-@font-face {
-    font-family: "GT\ Flexa\ Mono\ VAR\ Trial" ;
-    src: url("fonts/GT\ Flexa\ Mono\ VAR\ Trial.ttf");
-}
-@font-face {
-    font-family: "GT\ Flexa\ Mono\ VAR\ Trial" ;
-    src: url("fonts/GT\ Flexa\ Mono\ VAR\ Trial.woff2");
-}
-@font-face {
     font-family:"GT\ Flexa\ VAR\ Trial" ;
     src: url("fonts/GT\ Flexa\ VAR\ Trial.ttf");
-}
-@font-face {
-    font-family: "GT\ Flexa\ VAR\ Trial" ;
-    src: url("fonts/GT\ Flexa\ VAR\ Trial.woff2");
-}
-@font-face {
-    font-family: "Hagrid-Italic-Variable-trial" ;
-    src: url("fonts/Hagrid-Italic-Variable-trial.ttf");
-}
-@font-face {
-    font-family:"Hagrid-Text-Italic-Variable-trial" ;
-    src: url("fonts/Hagrid-Text-Italic-Variable-trial.ttf");
-}
-@font-face {
-    font-family: "Hagrid-Text-Variable-trial";
-    src: url("fonts/Hagrid-Text-Variable-trial.ttf");
 }
 @font-face {
     font-family: "Hagrid-Variable-trial";
@@ -339,78 +275,14 @@ input[type=range] {
     src: url("fonts/Inter-VariableFont_slnt\,wght.ttf");
 }
 @font-face {
-    font-family:"Jost-Italic-VariableFont_wght" ;
-    src: url("fonts/Jost-Italic-VariableFont_wght.ttf");
-}
-@font-face {
-    font-family:"Jost-VariableFont_wght" ;
-    src: url("fonts/Jost-VariableFont_wght.ttf");
-}
-@font-face {
-    font-family: "Minerale-Variable-Italic-TRIAL" ;
-    src: url("fonts/Minerale-Variable-Italic-TRIAL.ttf");
-}
-@font-face {
     font-family: "Minerale-variable-TRIAL" ;
     src: url("fonts/Minerale-variable-TRIAL.ttf");
-}
-@font-face {
-    font-family:"MolitorVariable-Trial" ;
-    src: url("fonts/MolitorVariable-Trial.ttf");
-}
-@font-face {
-    font-family: "MolitorVariableItalic-Trial";
-    src: url("fonts/MolitorVariableItalic-Trial.ttf");
-}
-@font-face {
-    font-family:"Oswald-VariableFont:wght" ;
-    src: url("fonts/Oswald-VariableFont:wght.ttf");
-}
-@font-face {
-    font-family:"Quicksand-VariableFont:wght" ;
-    src: url("fonts/Quicksand-VariableFont:wght.ttf");
 }
 @font-face {
     font-family:"Quicksand-VariableFont_wght" ;
     src: url("fonts/Quicksand-VariableFont_wght.ttf");
 }
 @font-face {
-    font-family: "RobotoMono-VariableFont_wght" ;
-    src: url("fonts/RobotoMono-VariableFont_wght.ttf");
-}
-@font-face {
-    font-family: "STIXVar";
-    src: url("fonts/STIXVar.otf");
-}
-@font-face {
-    font-family: "STIXVarBol";
-    src: url("fonts/STIXVarBol.otf");
-}
-@font-face {
-    font-family: "TRY_VesterbroVariable";
-    src: url("fonts/TRY_VesterbroVariable.ttf");
-}
-@font-face {
-    font-family: "TRY_VesterbroVariableItalic";
-    src: url("fonts/TRY_VesterbroVariableItalic.ttf");
-}
-@font-face {
-    font-family: "VarelaRound-Regular" ;
-    src: url("fonts/VarelaRound-Regular.ttf");
-}
-@font-face {
-    font-family: "Blacker-Sans-Display-Italic-Variable-trial" ;
-    src: url("fonts/Blacker-Sans-Display-Italic-Variable-trial.ttf");
-}
-@font-face {
-    font-family:"Blacker-Sans-Pro-Italic-Variable-trial" ;
-    src: url("fonts/Blacker-Sans-Pro-Italic-Variable-trial.ttf");
-}
-@font-face {
     font-family: "Blacker-Sans-Variable-trial";
     src: url("fonts/Blacker-Sans-Variable-trial.ttf");
-}
-@font-face {
-    font-family: "Comfortaa-VariableFont:wght" ;
-    src: url("fonts/Comfortaa-VariableFont:wght.ttf");
 }
