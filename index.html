@@ -1,4 +1,4 @@
-<html lang="en" onclick="keyPressed()">
+<html lang="en" onclick="keyPressed()" ontouchstart="touchScreen()">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -174,7 +174,7 @@
 		<script>
 		var k=false;
 		var id = setInterval(loop, 10);
-		var t=0,sldr,r,lvl=0,step=0,score=[],penalty=[],press=-1000,prm=[],str,mode=0,fontvar,totalscore;
+		var touch=false,t=0,sldr,r,lvl=0,step=0,score=[],penalty=[],press=-1000,prm=[],str,mode=0,fontvar,totalscore,waitinput=false;
 		var font=["RobotoMono","EBGaramond","Quicksand","Hagrid","Minerale","Inter","Blacker","GTFlexa","Compressa"];
 		var fmin=[[100],[400],[300],[100] ,[0   ],[100,-10],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
 		var fmax=[[800],[800],[700],[1000],[1000],[900,0  ],[499,1000],[200,800,100],[200,1000]];
@@ -219,7 +219,11 @@
 				document.getElementsByClassName("affiche")[0].innerHTML="Ready?";
 				document.getElementsByClassName("affiche")[0].style.opacity=1;
 				document.getElementsByClassName("slider")[0].style.opacity=1;
-				document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to start";
+				if(touch) {
+					document.getElementById("spacebar").innerHTML="Touch the screen<br>to start";
+				} else {
+					document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to start";				
+				}
 				document.getElementById("spacebar").style.opacity=1;
 				document.getElementById("helper").style.display="none";
 			}
@@ -246,7 +250,11 @@
 						document.getElementsByClassName("slider")[0].style.opacity=0;
 						k=false;
 						document.getElementById("spacebar").style.opacity=1;
-						document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
+						if(touch) {
+							document.getElementById("spacebar").innerHTML="Click the screen<br>to continue";
+						} else {
+							document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
+						}
 					}	
 					if(flash<2 && t==0) {
 						document.getElementsByClassName("textpar")[lvl].children[step].style.display="block";
@@ -288,9 +296,15 @@
 							if(k){
 								//Wait Player Input
 								saveScore();
-								document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
+								if(touch) {
+									document.getElementById("spacebar").innerHTML="Click the screen<br>to continue";
+								} else {
+									document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
+								}
+								waitinput=true;
+								clearInterval(id);
 							}
-						} else if(k) {
+						} else {
 							resetAdvance();
 						}
 					}
@@ -312,7 +326,11 @@
 						document.getElementById("helper").style.display="block";
 					}
 					document.getElementsByClassName("slider")[0].style.opacity=0;
-					document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";
+					if(touch) {
+						document.getElementById("spacebar").innerHTML="Click the screen<br>to validate";
+					} else {
+						document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";					
+					}
 					document.getElementById("spacebar").style.opacity=0;
 					document.getElementsByClassName("affiche")[0].style.opacity=0;
 				}
@@ -337,7 +355,11 @@
 					document.getElementsByClassName("slider")[0].style.marginLeft=0+"%";
 					document.getElementsByClassName("slider")[0].style.opacity=1;
 					document.getElementById("spacebar").style.opacity=1;
-					document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";
+					if(touch) {
+						document.getElementById("spacebar").innerHTML= "Click the screen<br>to validate";
+					} else {
+						document.getElementById("spacebar").innerHTML= "Hit <strong>(spacebar)</strong><br>to validate";
+					}
 					k=false;
 				}
 				function moveGame() {
@@ -434,7 +456,15 @@
 			if(event.key=="Escape") {
 				clearInterval(id);
 			}
-			k=true;
+			if(waitinput) {
+				id = setInterval(loop, 10);
+				waitinput=false;
+			} else {
+				k=true;
+			}
+		}
+		function touchScreen() {
+			touch=true;
 		}
 		</script>
 	</body>
