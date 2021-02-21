@@ -2,7 +2,9 @@
 Tnis project is a first video game realised around the theme of variable fonts. We created this to promote the fantastic work of Variable types!
 We do not own any right on the fonts displayed as this is non commercial school project.
 
-If you would like us to use your font, feel free to e-mail us!
+We used HTML, CSS and a lot of sketchy un-organised native JS, making this website very poorly optimized.
+
+If you would like us to use your font or propose any game/challenge/visual with Variable Fonts, feel free to e-mail us!
 ambroise.nicolao@gmail.com
 
 Made by
