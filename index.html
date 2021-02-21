@@ -225,7 +225,7 @@
 			}
 			function ready() {
 				t++;
-				sldr=-Math.cos(t/100*Math.PI)/2+.5;
+				sldr=-Math.cos(t/200*Math.PI)/2+.5;
 				document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";
 				if(k==true) {
 					mode=2;
@@ -342,8 +342,8 @@
 				}
 				function moveGame() {
 					//Move Game
-					r=Math.floor(t/100)+1;
-					sldr=-Math.cos(t/100*Math.PI)/2+.5;
+					r=Math.floor(t/200)+1;
+					sldr=-Math.cos(t/200*Math.PI)/2+.5;
 					document.getElementsByClassName("r")[0].innerHTML=t+" "+prm;
 					document.getElementsByClassName("affiche")[0].style.fontVariationSettings=fontvar+" "+(sldr*(fout[1][0]-fout[0][0])+fout[0][0]);
 					document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";	
