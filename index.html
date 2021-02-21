@@ -8,7 +8,7 @@
 </head>
     <body onload="start()" onkeydown="keyPressed()">
 
-		<header style="display:none;"id="headscore">
+		<header id="headerscore" class="header">
 		    <div>
 			<p class="aligncenter"><strong> (c) </strong>to<br> collection </p>
 		    </div>
@@ -16,7 +16,7 @@
 		    <p class="aligncenter"><strong> (s) </strong>to<br> exit</p>
 		    </div>
 		</header>
-		<header class="headerready">
+		<header id="headerready" class="header">
 			<div>
 				<p class="aligncenter"><strong> (c) </strong>to<br> collection </p>
 			</div>
@@ -27,13 +27,13 @@
 			<p class="aligncenter"><strong> (s) </strong>to<br> settings </p>
 			</div>
 		</header>
-		<header class="headerlevel">
+		<header id="headerlevel" class="header">
 			<div>
 				<p style="text-align: center;font-size: 32px;font-weight: 200; margin-bottom: 0;">Level 0</p>
 				<p style="margin: 0;">01/04</p>
 			</div>
 		</header>		
-		<header class="headercollection">
+		<header id="headercollection" class="header">
 			<div>
 				<p class="aligncenter"><strong> (c) </strong>to<br> exit </p>
 			</div>
@@ -41,7 +41,7 @@
 			<p class="aligncenter"><strong> (s) </strong>to<br> settings </p>
 			</div>
 		</header>
-		<header class="headersettings">
+		<header id="headersettings" class="header">
 			<div>
 				<p class="aligncenter"><strong> (c) </strong>to<br> collection </p>
 			</div>
@@ -50,15 +50,10 @@
 			</div>
 		</header>
 
-
-
-
-
-
          <div class="main" id="game">
 			<div style="width: 100%; margin:0 auto;">
 				<div style="height: 25vw; position: relative;">
-					<p class="affiche">0</p>
+					<p id="affiche">Error</p>
 					<div class="textpar">
 					<p class="text" style="font-variation-settings:'wght' 450;" id="RobotoMono">monospace</p>
 					</div>
@@ -212,10 +207,10 @@
 			function loadReady() {
 				//Load Ready?
 				t=0;
-				document.getElementsByClassName("headerready")[0].style.display="flex";
-				document.getElementsByClassName("headerready")[0].children[1].children[0].innerHTML="Level "+lvl;
-				document.getElementsByClassName("affiche")[0].innerHTML="Ready?";
-				document.getElementsByClassName("affiche")[0].style.opacity=1;
+				document.getElementById("headerready").style.display="flex";
+				document.getElementById("headerready").children[1].children[0].innerHTML="Level "+lvl;
+				document.getElementById("affiche").innerHTML="Ready?";
+				document.getElementById("affiche").style.opacity=1;
 				document.getElementsByClassName("slider")[0].style.opacity=1;
 				if(touch) {
 					document.getElementById("spacebar").innerHTML="Touch the screen<br>to start";
@@ -232,10 +227,10 @@
 				if(k==true) {
 					mode=2;
 					t=-200;
-					document.getElementsByClassName("headerready")[0].style.display="none";
-					document.getElementsByClassName("headerlevel")[0].style.display="flex";
-					document.getElementsByClassName("headerlevel")[0].children[0].children[0].innerHTML="Level "+lvl;
-					document.getElementsByClassName("headerlevel")[0].children[0].children[1].innerHTML=0+"/"+Math.min(lvl+1,4);
+					document.getElementById("headerready").style.display="none";
+					document.getElementById("headerlevel").style.display="flex";
+					document.getElementById("headerlevel").children[0].children[0].innerHTML="Level "+lvl;
+					document.getElementById("headerlevel").children[0].children[1].innerHTML=0+"/"+Math.min(lvl+1,4);
 				}
 			}
 			function level(wait,flash) {
@@ -244,7 +239,7 @@
 						startLevel();
 						loadFontSettings();
 						t=0;
-						document.getElementsByClassName("affiche")[0].style.opacity=1;
+						document.getElementById("affiche").style.opacity=1;
 						document.getElementsByClassName("slider")[0].style.opacity=0;
 						k=false;
 						document.getElementById("spacebar").style.opacity=1;
@@ -274,11 +269,11 @@
 						case -120:
 							loadFontSettings();
 							//Flash On
-							document.getElementsByClassName("affiche")[0].style.opacity=1;
+							document.getElementById("affiche").style.opacity=1;
 							break;
 						case -80:
 							//Flash Off
-							document.getElementsByClassName("affiche")[0].style.opacity=0;
+							document.getElementById("affiche").style.opacity=0;
 							break;
 						case 0:
 							startGame();
@@ -330,13 +325,13 @@
 						document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";					
 					}
 					document.getElementById("spacebar").style.opacity=0;
-					document.getElementsByClassName("affiche")[0].style.opacity=0;
+					document.getElementById("affiche").style.opacity=0;
 				}
 				function loadFontSettings() {
 					//Get Font settings 
-					document.getElementsByClassName("affiche")[0].style.fontFamily=document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily;
-					document.getElementsByClassName("affiche")[0].style.fontVariationSettings=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings;
-					document.getElementsByClassName("affiche")[0].innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].innerHTML;
+					document.getElementById("affiche").style.fontFamily=document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily;
+					document.getElementById("affiche").style.fontVariationSettings=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings;
+					document.getElementById("affiche").innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].innerHTML;
 					
 					fout=[[100],[800]];
 					fontvar= document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings.split(" ")
@@ -349,7 +344,7 @@
 				
 				function startGame() {
 					//Start Game
-					document.getElementsByClassName("affiche")[0].style.opacity=1;
+					document.getElementById("affiche").style.opacity=1;
 					document.getElementsByClassName("slider")[0].style.marginLeft=0+"%";
 					document.getElementsByClassName("slider")[0].style.opacity=1;
 					document.getElementById("spacebar").style.opacity=1;
@@ -365,7 +360,7 @@
 					r=Math.floor(t/200)+1;
 					sldr=-Math.cos(t/200*Math.PI)/2+.5;
 					document.getElementsByClassName("r")[0].innerHTML=t+" "+prm;
-					document.getElementsByClassName("affiche")[0].style.fontVariationSettings=fontvar+" "+(sldr*(fout[1][0]-fout[0][0])+fout[0][0]);
+					document.getElementById("affiche").style.fontVariationSettings=fontvar+" "+(sldr*(fout[1][0]-fout[0][0])+fout[0][0]);
 					document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";	
 				}
 				function saveScore() {
@@ -379,13 +374,13 @@
 				function resetAdvance() {
 					//Reset & Advance Game
 					document.getElementsByClassName("slider")[0].style.opacity=0.5;
-					document.getElementsByClassName("affiche")[0].style.opacity=0.5;
+					document.getElementById("affiche").style.opacity=0.5;
 					document.getElementById("spacebar").style.opacity=0.5;
 					document.getElementsByClassName("textpar")[lvl].children[step].style.display="none";
 					step++;
 					press=-1000;
 					t=-200;
-					document.getElementsByClassName("headerlevel")[0].children[0].children[1].innerHTML=step+"/"+Math.min(lvl+1,4);
+					document.getElementById("headerlevel").children[0].children[1].innerHTML=step+"/"+Math.min(lvl+1,4);
 				}
 			}
 			function searchFont(fnt) {
@@ -403,8 +398,8 @@
 					document.getElementById("score").children[0].children[1].children[2].style.display="none";					
 					document.getElementById("score").children[0].children[2].children[2].style.display="none";					
 				}
-				document.getElementsByClassName("headerlevel")[0].style.display="none";
-				document.getElementById("headscore").style.display="flex";
+				document.getElementById("headerlevel").style.display="none";
+				document.getElementById("headerscore").style.display="flex";
 				document.getElementById("score").style.display="flex";
 				document.getElementById("game").style.filter= "blur(8px)";
 				totalscore=0;
@@ -439,7 +434,7 @@
 			}
 			function waitscore() {
 				if(k) {
-					document.getElementById("headscore").style.display="none";
+					document.getElementById("headerscore").style.display="none";
 
 					document.getElementById("score").style.display="none";
 					document.getElementById("game").style.filter= "none";
