@@ -27,8 +27,8 @@ header{
     height:20px;
     border-radius:10px;
     font-family: "RobotoMono", 'Times New Roman', Times, serif;
-	-ms-transform: translateX(-50%);
-	transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 .text {
     position:absolute;
@@ -47,19 +47,19 @@ header{
     mix-blend-mode: difference;
 }
 #affiche {
-	position: absolute;
-    bottom: 0;
+    position: absolute;
     display:block;
-	text-align:center;
+    text-align:center;
     text-align: center;
     font-size: 12vw;
     margin: 5% auto;
     font-family: "RobotoMono", 'Times New Roman', Times, serif;	
-	left:0;
-	right:0;
-	top:0;
-	text-align:center;
-    transition:1s;
+    bottom: 0;
+    top:0;
+    left:0;
+    right:0;
+    text-align:center;
+    transition:.5s;
     transition-property:opacity;
 
 }
