@@ -136,6 +136,7 @@ header{
 }
 .aligncenter{
     text-align: center;
+    font-size: clamp(12px, 1.5vw, 24px)
 }
 .alignleft{
     text-justify: left;
