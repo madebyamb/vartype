@@ -265,7 +265,7 @@ input[type=range] {
     src: url("fonts/EBGaramond-VariableFont_wght.ttf");
 }
 @font-face {
-    font-family:"GT\ Flexa\ VAR\ Trial" ;
+    font-family:"GTFlexa" ;
     src: url("fonts/GT\ Flexa\ VAR\ Trial.ttf");
 }
 @font-face {
@@ -273,7 +273,7 @@ input[type=range] {
     src: url("fonts/Hagrid-Variable-trial.ttf");
 }
 @font-face {
-    font-family: "Inter Var";
+    font-family: "InterVar";
     src: url("fonts/Inter-VariableFont_slnt\,wght.ttf");
 }
 @font-face {
