@@ -21,8 +21,8 @@ header{
     display: flex;
     align-items: center;
 }
-#slider {
-    background-color:black;
+.slider {
+    background-color:white;
     width:20px;
     height:20px;
     border-radius:10px;
