@@ -111,7 +111,7 @@
 					<div style="display:none; height:20px; width:5px; border-radius:5px; background-color:black; margin:auto; top:-50%; position:relative; -ms-transform: translateY(-50%);transform: translateY(-50%);" id="helper"></div>
 				</div>
 				<p class="currant" id="spacebar">press <strong>(spacebar)</strong><br>to validate</p>
-				<p class="r" style="position:absolute; top:0; left:0;"></p>
+				<p id="r" style="position:absolute; top:0; left:0;"></p>
 			</div>
 		</div>
 		
@@ -169,7 +169,7 @@
 		<script>
 		var k=false;
 		var id = setInterval(loop, 10);
-		var touch=false,t=0,sldr,r,lvl=1,step=0,score=[],penalty=[],press=-1000,prm=[],str,mode=0,fontvar,totalscore,waitinput=false;
+		var touch=false,t=0,sldr,r,lvl=0,step=0,score=[],penalty=[],prm=[],str,mode=0,fonttype,vari=0,totalscore,waitinput=false,fontscore=[];
 		var font=['"RobotoMono"','"RobotoMono-Italic"','"EBGaramond-VariableFont_wght"','"Quicksand-VariableFont_wght"','"Hagrid-Variable-trial"','"Minerale-variable-TRIAL"','"Inter Var"','"Blacker-Sans-Variable-trial"','"GT\ Flexa\ VAR\ Trial"','"Compressa"'];
 		var fmin=[[100],[100],[400],[300],[100] ,[0   ],[100,-10],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
 		var fmax=[[800],[800],[800],[700],[1000],[1000],[900,0  ],[499,1000],[200,800,100],[200,1000]];
@@ -186,22 +186,24 @@
 					break;
 				case 2:
 					//Play Game
-					if(step==Math.min(lvl,4)) {
-						mode++;
-						k=false;
-					} else {
-						level(lvl<4,lvl);
-					}
+					level(lvl<4,lvl);
 					break;
 				case 3:
+					continueLevel(lvl<4);
+					if(step==Math.min(lvl,4)) {
+						mode=4;
+						k=false;
+					}
+					break;
+				case 4:
 					//Load Scoreboard
 					scoreboard(lvl>2);
 					break;
-				case 4:
+				case 5:
 					//Wait
 					waitscore();
 					break;
-				case 5:
+				case 6:
 					mode=0;
 					step=0;
 			}
@@ -239,7 +241,7 @@
 			function level(wait,flash) {
 				if(flash<4) {
 					if(t==-200) {
-						startLevel();
+						startLevel(flash);
 						loadFontSettings();
 						document.getElementById("affiche").style.opacity=1;
 						document.getElementsByClassName("slider")[0].style.opacity=0;
@@ -265,7 +267,7 @@
 				if(flash>3) {
 					switch(t) {
 						case -200:
-							startLevel();
+							startLevel(flash);
 							break;
 						case -120:
 							loadFontSettings();
@@ -284,105 +286,123 @@
 				}
 				
 				if(0<t) {
-					if(wait) {
-						if(press==-1000) {
-							moveGame();
-							if(k+"t"==" t"){
-								//Wait Player Input
-								saveScore();
-								if(touch) {
-									document.getElementById("spacebar").innerHTML="Click the <strong>(screen)</strong><br>to continue";
-								} else {
-									document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
-								}
-								waitinput=true;
-								clearInterval(id);
-							}
-						} else {
-							resetAdvance();
-						}
-					}
-					else {
-						if(press==-1000) {
-							moveGame();
-							if(k+"t"==" t") {
-								saveScore();
-								document.getElementById("spacebar").style.opacity=0;
-							}
-						}
-						if(press==t-100) {
-							resetAdvance();
-						}
-					}
-				}
-				function startLevel() {
-					if(flash==1) {
-						document.getElementById("helper").style.display="block";
-					}
-					document.getElementsByClassName("slider")[0].style.opacity=0;
-					if(touch) {
-						document.getElementById("spacebar").innerHTML="Click the <strong>(screen)</strong><br>to validate";
+					if(k+"t"==" t") {
+						saveScore();
+						mode++;
+						t=0;
 					} else {
-						document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";					
+						moveGame();
 					}
-					document.getElementById("spacebar").style.opacity=0;
-					document.getElementById("affiche").style.opacity=0;
 				}
-				function loadFontSettings() {
-					//Get Font settings 
-					document.getElementById("affiche").style.fontFamily=document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily;
-					document.getElementById("affiche").style.fontVariationSettings=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings;
-					document.getElementById("affiche").innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].innerHTML;
-					
-					fout=searchFont(document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily);
-					fontvar= document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings.split(" ")
-					prm=[];
-					for(var i=0;i<fout[0].length;i++) {
-						prm.push((fontvar[1]-fout[0][i])/(fout[1][i]-fout[0][i]));
-					}
-					fontvar= fontvar[0];
-
-				}
-				
-				function startGame() {
-					//Start Game
-					document.getElementById("affiche").style.opacity=1;
-					document.getElementsByClassName("slider")[0].style.marginLeft=0+"%";
-					document.getElementsByClassName("slider")[0].style.opacity=1;
-					document.getElementById("spacebar").style.opacity=1;
-					if(touch) {
-						document.getElementById("spacebar").innerHTML= "Click the <strong>(screen)</strong><br>to validate";
+			}
+			function continueLevel(wait) {
+				if(wait) {
+					t=100
+					waitinput=true;
+					clearInterval(id);
+				} else if(t==100) {
+					if(vari==fonttype.length-1) {
+						resetAdvance();
 					} else {
-						document.getElementById("spacebar").innerHTML= "Hit <strong>(spacebar)</strong><br>to validate";
+						advanceVarType();
 					}
-					k=false;
+					mode--;
+				} else {
+					t++;
 				}
-				function moveGame() {
-					//Move Game
-					r=Math.floor(t/200)+1;
-					sldr=-Math.cos(t/200*Math.PI)/2+.5;
-					document.getElementById("affiche").style.fontVariationSettings=fontvar+" "+(sldr*(fout[1][0]-fout[0][0])+fout[0][0]);
-					document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";	
+			}
+			function startLevel(flash) {
+				score.push([]);
+				penalty.push(0);
+				if(flash==1) {
+					document.getElementById("helper").style.display="block";
 				}
-				function saveScore() {
-					//Save Score/Input Time
-					press=t;
-					score.push(Math.ceil(100-Math.abs(sldr-prm[0])*100));
-					penalty.push(r)
+				document.getElementsByClassName("slider")[0].style.opacity=0;
+				if(touch) {
+					document.getElementById("spacebar").innerHTML="Click the <strong>(screen)</strong><br>to validate";
+				} else {
+					document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";					
+				}
+				document.getElementById("spacebar").style.opacity=0;
+				document.getElementById("affiche").style.opacity=0;
+			}
+			function loadFontSettings() {
+				//Get Font settings 
+				document.getElementById("affiche").style.fontFamily=document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily;
+				document.getElementById("affiche").style.fontVariationSettings=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings;
+				document.getElementById("affiche").innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].innerHTML;
+				fout=searchFont(document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily);
+				prm=[];
+				fonttype=[];
+				var fontvar= document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings.split(", ")
+				for(var i=0;i<fontvar.length;i++) {
+					fontvar[i]=fontvar[i].split(" ");
+				}
+				for(var i=0;i<fontvar.length;i++) {
+					fonttype.push(fontvar[i][0]);
+					prm.push((fontvar[i][1]-fout[0][i])/(fout[1][i]-fout[0][i]));
+				}
+			}
+			
+			function startGame() {
+				//Start Game
+				document.getElementById("affiche").style.opacity=1;
+				document.getElementsByClassName("slider")[0].style.marginLeft=0+"%";
+				document.getElementsByClassName("slider")[0].style.opacity=1;
+				document.getElementById("spacebar").style.opacity=1;
+				if(touch) {
+					document.getElementById("spacebar").innerHTML= "Click the <strong>(screen)</strong><br>to validate";
+				} else {
+					document.getElementById("spacebar").innerHTML= "Hit <strong>(spacebar)</strong><br>to validate";
+				}
+				k=false;
+			}
+			function moveGame() {
+				//Move Game
+				r=Math.floor(t/200);
+				sldr=-Math.cos(t/200*Math.PI)/2+.5;
+				var fontvariation="";
+				for(var i=0;i<fonttype.length;i++) {
+					fontvariation+=fonttype[i]+" ";
+					if(i<vari) {
+						fontvariation+=fontscore[i]*(fout[1][i]-fout[0][i])+fout[0][i];
+					} else if(i==vari) {
+						fontvariation+=sldr*(fout[1][i]-fout[0][i])+fout[0][i];
+					} else {
+						fontvariation+=fout[0][i];
+					}
+					if(i!=fonttype.length-1) {
+						fontvariation+=", ";
+					}
+				}
+				document.getElementById("affiche").style.fontVariationSettings=fontvariation;
+				document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";	
+			}
+			function saveScore() {
+				//Save Score/Input Time
+				fontscore.push(sldr);
+				score[step].push(1-Math.abs(sldr-prm[vari]));//1-Math.abs(sldr-prm[0])
+				penalty[step]+=r;
+				k=false;
+				if(vari==fonttype.length-1) {
 					document.getElementsByClassName("textpar")[lvl].children[step].style.display="block";
-					k=false;
 				}
-				function resetAdvance() {
-					//Reset & Advance Game
-					document.getElementsByClassName("slider")[0].style.opacity=0.5;
-					document.getElementById("affiche").style.opacity=0.5;
-					document.getElementById("spacebar").style.opacity=0.5;
-					document.getElementsByClassName("textpar")[lvl].children[step].style.display="none";
-					step++;
-					press=-1000;
-					t=-200;
-					document.getElementById("headerlevel").children[0].children[1].innerHTML=step+"/"+Math.min(lvl,4);
-				}
+			}
+			function resetAdvance() {
+				//Reset & Advance Game
+				document.getElementsByClassName("slider")[0].style.opacity=0.5;
+				document.getElementById("affiche").style.opacity=0.5;
+				document.getElementById("spacebar").style.opacity=0.5;
+				document.getElementsByClassName("textpar")[lvl].children[step].style.display="none";
+				step++;
+				fontscore=[];
+				vari=0;
+				t=-200;
+				document.getElementById("headerlevel").children[0].children[1].innerHTML=step+"/"+Math.min(lvl,4);
+			}
+			function advanceVarType() {
+				vari++;
+				t=0;
 			}
 			function searchFont(fnt) {
 				for(var i=0;i<font.length;i++) {
@@ -420,12 +440,17 @@
 				}
 				for(var i=0;i<score.length;i++) {
 					if(bounce==false) {
-						penalty[i]=1;
+						penalty[i]=0;
 					}
+					var scorestep=0;
+					for(var j=0;j<score[i].length;j++) {
+						scorestep+=score[i][j];
+					}
+					score[i]=Math.ceil(scorestep/score[i].length*100);
 					document.getElementById("scoreboard").children[1].children[i].innerHTML=score[i]+"%";
-					document.getElementById("scoreboard").children[2].children[i].innerHTML=penalty[i]-1;
-					document.getElementById("scoreboard").children[3].children[i].innerHTML=Math.ceil(score[i]/penalty[i])+"%";
-					totalscore+=Math.ceil(score[i]/penalty[i]);
+					document.getElementById("scoreboard").children[2].children[i].innerHTML=penalty[i];
+					document.getElementById("scoreboard").children[3].children[i].innerHTML=Math.ceil(score[i]/(penalty[i]+1))+"%";
+					totalscore+=Math.ceil(score[i]/(penalty[i]+1));
 				}
 				totalscore=Math.floor(totalscore/score.length);
 				document.getElementById("scoreboard").parentElement.children[0].children[0].innerHTML=" Level "+lvl+" - <strong>"+totalscore+"%</strong>";
@@ -436,7 +461,7 @@
 			function waitscore() {
 				if(k+"t"==" t" || k=="r" || k=="R") {
 					document.getElementById("headerscore").style.display="none";
-
+					
 					document.getElementById("score").style.display="none";
 					document.getElementById("game").style.filter= "none";
 					score=[];
