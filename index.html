@@ -213,8 +213,10 @@
 				document.getElementById("affiche").innerHTML="Ready?";
 				document.getElementById("affiche").style.opacity=1;
 				document.getElementsByClassName("slider")[0].style.opacity=1;
-				if(touch) {
-					document.getElementById("spacebar").innerHTML="Touch the screen<br>to start";
+				if(lvl==1) {
+					document.getElementById("spacebar").innerHTML="Touch the <strong>(screen)</strong><br>or Press <strong>(spacebar)</strong><br> to start";				
+				}else if(touch) {
+					document.getElementById("spacebar").innerHTML="Touch the <strong>(screen)</strong><br>to start";
 				} else {
 					document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to start";				
 				}
@@ -244,7 +246,7 @@
 						k=false;
 						document.getElementById("spacebar").style.opacity=1;
 						if(touch) {
-							document.getElementById("spacebar").innerHTML="Click the screen<br>to continue";
+							document.getElementById("spacebar").innerHTML="Click the <strong>(screen)</strong><br>to continue";
 						} else {
 							document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
 						}
@@ -289,7 +291,7 @@
 								//Wait Player Input
 								saveScore();
 								if(touch) {
-									document.getElementById("spacebar").innerHTML="Click the screen<br>to continue";
+									document.getElementById("spacebar").innerHTML="Click the <strong>(screen)</strong><br>to continue";
 								} else {
 									document.getElementById("spacebar").innerHTML="Press <strong>(spacebar)</strong><br>to continue";
 								}
@@ -319,7 +321,7 @@
 					}
 					document.getElementsByClassName("slider")[0].style.opacity=0;
 					if(touch) {
-						document.getElementById("spacebar").innerHTML="Click the screen<br>to validate";
+						document.getElementById("spacebar").innerHTML="Click the <strong>(screen)</strong><br>to validate";
 					} else {
 						document.getElementById("spacebar").innerHTML="Hit <strong>(spacebar)</strong><br>to validate";					
 					}
@@ -349,7 +351,7 @@
 					document.getElementsByClassName("slider")[0].style.opacity=1;
 					document.getElementById("spacebar").style.opacity=1;
 					if(touch) {
-						document.getElementById("spacebar").innerHTML= "Click the screen<br>to validate";
+						document.getElementById("spacebar").innerHTML= "Click the <strong>(screen)</strong><br>to validate";
 					} else {
 						document.getElementById("spacebar").innerHTML= "Hit <strong>(spacebar)</strong><br>to validate";
 					}
