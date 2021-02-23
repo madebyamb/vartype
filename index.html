@@ -13,7 +13,7 @@
 			<p class="aligncenter"><strong> (c) </strong>to<br> collection </p>
 		    </div>
 		    <div>
-		    <p class="aligncenter"><strong> (s) </strong>to<br> exit</p>
+		    <p class="aligncenter"><strong> (s) </strong>to<br> settings</p>
 		    </div>
 		</header>
 		<header id="headerready" class="header">
@@ -169,7 +169,7 @@
 		<script>
 		var k=false;
 		var id = setInterval(loop, 10);
-		var touch=false,t=0,sldr,r,lvl=5,step=0,score=[],penalty=[],prm=[],str,mode=0,fonttype,vari=0,totalscore,waitinput=false,fontscore=[];
+		var touch=false,t=0,sldr,r,lvl=1,step=0,score=[],penalty=[],prm=[],str,mode=0,fonttype,vari=0,totalscore,waitinput=false,fontscore=[];
 		var font=['RobotoMono','RobotoMono-Italic','EBGaramond-VariableFont_wght','Quicksand-VariableFont_wght','Hagrid-Variable-trial','Minerale-variable-TRIAL','Inter Var','Blacker-Sans-Variable-trial','GT\ Flexa\ VAR\ Trial','Compressa'];
 		var fmin=[[100],[100],[400],[300],[100] ,[0   ],[100,0  ],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
 		var fmax=[[800],[800],[800],[700],[1000],[1000],[900,-10],[499,1000],[200,800,100],[200,1000]];
@@ -186,7 +186,7 @@
 					break;
 				case 2:
 					//Play Game
-					level(lvl<4,lvl);
+					level(lvl);
 					break;
 				case 3:
 					continueLevel(lvl<4);
@@ -197,7 +197,7 @@
 					break;
 				case 4:
 					//Load Scoreboard
-					scoreboard(lvl>2);
+					scoreboard(lvl>3);
 					break;
 				case 5:
 					//Wait
@@ -238,7 +238,7 @@
 					document.getElementById("headerlevel").children[0].children[1].innerHTML=0+"/"+Math.min(lvl,4);
 				}
 			}
-			function level(wait,flash) {
+			function level(flash) {
 				if(flash<4) {
 					if(t==-200) {
 						startLevel(flash);
