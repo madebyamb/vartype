@@ -1,9 +1,10 @@
 var k=false;
-var id = setInterval(loop, 10);
+var id = setInterval(loop, 20);
 var touch=false,t=0,sldr,r,lvl=1,step=0,score=[],penalty=[],prm=[],str,mode=0,fonttype,vari=0,totalscore,waitinput=false,fontscore=[],page;
-var font=['RobotoMono','RobotoMono-Italic','EBGaramond-VariableFont_wght','Quicksand-VariableFont_wght','Hagrid-Variable-trial','Minerale-variable-TRIAL','InterVar','Blacker-Sans-Variable-trial','GTFlexa','Compressa'];
-var fmin=[[100],[100],[400],[300],[100] ,[0   ],[100,0  ],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
-var fmax=[[800],[800],[800],[700],[1000],[1000],[900,-10],[499,1000],[200,800,100],[200,1000]];
+var font=['RobotoMono','EBGaramond-VariableFont_wght','Quicksand-VariableFont_wght','Hagrid-Variable-trial','Minerale-variable-TRIAL','InterVar','Blacker-Sans-Variable-trial','GTFlexa','Compressa'];
+var lvlname=['RobotoMono','EBGaramond','Quicksand','Hagrid','Minérale','Inter','Blacker','GTFlexa','Compressa'];
+var fmin=[[100],[400],[300],[100] ,[0   ],[100,0  ],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
+var fmax=[[800],[800],[700],[1000],[1000],[900,-10],[499,1000],[200,800,100],[200,1000]];
 var fout;
 function loop() {
 	switch(mode) {
@@ -30,6 +31,9 @@ function loop() {
 		case 4:
 			//Wait
 			waitscore();
+			break;
+		case 5:
+			loadCollection();
 			break;
 		case 6:
 			//Score>settings
@@ -72,10 +76,16 @@ function loop() {
 			document.getElementById("headerlevel").children[0].children[0].innerHTML="Level "+lvl;
 			document.getElementById("headerlevel").children[0].children[1].innerHTML=0+"/"+Math.min(lvl,4);
 		}
-		if(k=="s") {
+		if(k=="s" ||k=="S") {
 			document.getElementById("headerready").style.display="none";
 			document.getElementById("game").style.filter= "blur(8px)";
 			mode=6;
+			k=false;
+		}
+		if(k=="c" ||k=="C") {
+			document.getElementById("headerready").style.display="none";
+			document.getElementById("game").style.filter= "blur(8px)";
+			mode=5;
 			k=false;
 		}
 	}
@@ -295,6 +305,12 @@ function loop() {
 		}
 		totalscore=Math.floor(totalscore/score.length);
 		document.getElementById("scoreboard").parentElement.children[0].children[0].innerHTML=" Level "+lvl+" - <strong>"+totalscore+"%</strong>";
+		//unlock Collection
+		document.getElementsByClassName("elementmenu")[lvl].children[0].style.visibility="visible";
+		document.getElementsByClassName("elementmenu")[lvl].children[0].innerHTML=Math.max(parseInt(document.getElementsByClassName("elementmenu")[lvl].children[0].innerHTML),totalscore)+"%";
+		document.getElementsByClassName("elementmenu")[lvl].children[1].style.fontFamily=document.getElementsByClassName("textpar")[lvl].children[0].style.fontFamily;
+		document.getElementsByClassName("elementmenu")[lvl].children[1].style.textDecoration="none";
+		document.getElementsByClassName("elementmenu")[lvl].children[1].innerHTML=lvlname[lvl];
 	}
 	function waitscore() {
 		if(k===false) {
@@ -313,21 +329,42 @@ function loop() {
 				case "rt":
 					mode=0;
 					break;
+				case "Ct":
+				case "ct":
+					mode=5;
+					break;
 				case "St":
 				case "st":
 					mode=6;
 					break;
-				//case "Ct":
-				//case "ct":
-				//	break;
 			}
 			document.getElementById("headerscore").style.display="none";
-			document.getElementById("score").style.display="none";					
+			document.getElementById("score").style.display="none";			
+			k=false;
+		}
+	}
+	function loadCollection() {
+		if(k===false){
+			document.getElementById("menu").style.display="flex";
+			document.getElementById("headercollection").style.display="flex";
+			waitinput=["s","S","c","C","1","2","3","4","5","6","7","8","9"]
+			clearInterval(id);
+		} else {
+			document.getElementById("menu").style.display="none";
+			document.getElementById("headercollection").style.display="none";
+			if(k=="c" ||k=="C") {
+				mode=page;
+			} else if(k=="s" || k=="S") {
+				mode=6;
+			} else {
+				mode=0;
+				lvl=parseInt(k);
+			}
 			k=false;
 		}
 	}
 	function loadSettings() {
-		if(k===false) {				
+		if(k===false) {
 			document.getElementById("settings").style.display="flex";
 			document.getElementById("headersettings").style.display="flex";
 			waitinput=["c","C","s","S"];
@@ -337,6 +374,8 @@ function loop() {
 			document.getElementById("headersettings").style.display="none";
 			if(k=="s" || k=="S") {
 				mode=page;
+			} else if(k=="c" ||k=="C") {
+				mode=5;
 			}
 			k=false;
 		}
