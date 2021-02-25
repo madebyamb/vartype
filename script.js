@@ -1,6 +1,6 @@
-		var k=false;
+var k=false;
 		var id = setInterval(loop, 10);
-		var touch=false,t=0,sldr,r,lvl=1,step=0,score=[],penalty=[],prm=[],str,mode=0,fonttype,vari=0,totalscore,waitinput=false,fontscore=[];
+		var touch=false,t=0,sldr,r,lvl=1,step=0,score=[],penalty=[],prm=[],str,mode=0,fonttype,vari=0,totalscore,waitinput=false,fontscore=[],page;
 		var font=['RobotoMono','RobotoMono-Italic','EBGaramond-VariableFont_wght','Quicksand-VariableFont_wght','Hagrid-Variable-trial','Minerale-variable-TRIAL','InterVar','Blacker-Sans-Variable-trial','GTFlexa','Compressa'];
 		var fmin=[[100],[100],[400],[300],[100] ,[0   ],[100,0  ],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
 		var fmax=[[800],[800],[800],[700],[1000],[1000],[900,-10],[499,1000],[200,800,100],[200,1000]];
@@ -8,8 +8,9 @@
 		function loop() {
 			switch(mode) {
 				case 0:
+					page=mode;
 					loadReady();
-					mode=1;
+					mode++;
 					break;
 				case 1:
 					//Wait Input
@@ -22,25 +23,28 @@
 				case 3:
 					continueLevel(lvl<4);
 					if(step==Math.min(lvl,4)) {
-						mode=4;
+						mode++;
 						k=false;
 					}
 					break;
 				case 4:
-					//Load Scoreboard
-					scoreboard(lvl>3);
-					break;
-				case 5:
 					//Wait
 					waitscore();
 					break;
 				case 6:
-					mode=0;
-					step=0;
+					//Score>settings
+					loadSettings();
+					//if(key=="s")
+					break;
 			}
 			function loadReady() {
 				//Load Ready?
+				step=0;
+				k=false;
 				t=0;
+				score=[];
+				penalty=[];
+				document.getElementById("game").style.filter="none";
 				document.getElementById("headerready").style.display="flex";
 				document.getElementById("headerready").children[1].children[0].innerHTML="Level "+lvl;
 				document.getElementById("affiche").innerHTML="Ready?";
@@ -60,13 +64,17 @@
 				t++;
 				sldr=-Math.cos(t/200*Math.PI)/2+.5;
 				document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";
-				if(k+"t"==" t") {
+				if(k===" ") {
 					mode++;
 					t=-200;
 					document.getElementById("headerready").style.display="none";
 					document.getElementById("headerlevel").style.display="flex";
 					document.getElementById("headerlevel").children[0].children[0].innerHTML="Level "+lvl;
 					document.getElementById("headerlevel").children[0].children[1].innerHTML=0+"/"+Math.min(lvl,4);
+				}
+				if(k==="s") {
+					document.getElementById("headerready").style.display="none";
+					mode=6;
 				}
 			}
 			function level(flash) {
@@ -85,7 +93,7 @@
 						}
 						t=-1;
 						if(flash==3) {
-							waitinput=true;
+							waitinput=[" "];
 							clearInterval(id);
 						} else {
 							document.getElementsByClassName("textpar")[lvl].children[step].style.display="block";
@@ -117,7 +125,7 @@
 				}
 				
 				if(0<t) {
-					if(k+"t"==" t") {
+					if(k===" ") {
 						saveScore();
 						mode++;
 						t=0;
@@ -129,7 +137,7 @@
 			function continueLevel(wait) {
 				if(wait &&t==0) {
 					t=100
-					waitinput=true;
+					waitinput=[" "];
 					clearInterval(id);
 				} else if(t==100) {
 					if(vari==fonttype.length-1) {
@@ -248,8 +256,8 @@
 					document.getElementById("score").children[0].children[1].children[2].style.display="block";
 					document.getElementById("score").children[0].children[2].children[2].style.display="block";
 				} else {
-					document.getElementById("score").children[0].children[1].children[2].style.display="none";					
-					document.getElementById("score").children[0].children[2].children[2].style.display="none";					
+					document.getElementById("score").children[0].children[1].children[2].style.display="none";
+					document.getElementById("score").children[0].children[2].children[2].style.display="none";
 				}
 				document.getElementById("headerlevel").style.display="none";
 				document.getElementById("headerscore").style.display="flex";
@@ -258,16 +266,15 @@
 				totalscore=0;
 				for(var i=0;i<4;i++) {
 					if(i<Math.min(lvl,4)) {
-						document.getElementById("score").children[0].children[2].children[0].children[i].style.display="block";					
-						document.getElementById("score").children[0].children[2].children[1].children[i].style.display="block";					
-						document.getElementById("score").children[0].children[2].children[2].children[i].style.display="block";					
-						document.getElementById("score").children[0].children[2].children[3].children[i].style.display="block";					
+						document.getElementById("score").children[0].children[2].children[0].children[i].style.display="block";
+						document.getElementById("score").children[0].children[2].children[1].children[i].style.display="block";
+						document.getElementById("score").children[0].children[2].children[2].children[i].style.display="block";
+						document.getElementById("score").children[0].children[2].children[3].children[i].style.display="block";
 					} else {
-						document.getElementById("score").children[0].children[2].children[0].children[i].style.display="none";					
-						document.getElementById("score").children[0].children[2].children[1].children[i].style.display="none";					
-						document.getElementById("score").children[0].children[2].children[2].children[i].style.display="none";					
-						document.getElementById("score").children[0].children[2].children[3].children[i].style.display="none";		
-					
+						document.getElementById("score").children[0].children[2].children[0].children[i].style.display="none";
+						document.getElementById("score").children[0].children[2].children[1].children[i].style.display="none";
+						document.getElementById("score").children[0].children[2].children[2].children[i].style.display="none";
+						document.getElementById("score").children[0].children[2].children[3].children[i].style.display="none";
 					}
 				}
 				for(var i=0;i<score.length;i++) {
@@ -278,31 +285,58 @@
 					for(var j=0;j<score[i].length;j++) {
 						scorestep+=score[i][j];
 					}
-					score[i]=Math.ceil(scorestep/score[i].length*100);
-					document.getElementById("scoreboard").children[1].children[i].innerHTML=score[i]+"%";
+					scorestep=Math.ceil(scorestep/score[i].length*100);
+					document.getElementById("scoreboard").children[1].children[i].innerHTML=scorestep+"%";
 					document.getElementById("scoreboard").children[2].children[i].innerHTML=penalty[i];
-					document.getElementById("scoreboard").children[3].children[i].innerHTML=Math.ceil(score[i]/(penalty[i]+1))+"%";
-					totalscore+=Math.ceil(score[i]/(penalty[i]+1));
+					document.getElementById("scoreboard").children[3].children[i].innerHTML=Math.ceil(scorestep/(penalty[i]+1))+"%";
+					totalscore+=Math.ceil(scorestep/(penalty[i]+1));
 				}
 				totalscore=Math.floor(totalscore/score.length);
 				document.getElementById("scoreboard").parentElement.children[0].children[0].innerHTML=" Level "+lvl+" - <strong>"+totalscore+"%</strong>";
-				
-				mode++;
-				k=false;
 			}
 			function waitscore() {
-				if(k+"t"==" t" || k=="r" || k=="R") {
+				if(k===false) {
+					page=mode;
+					//Load Scoreboard
+					scoreboard(lvl>3);
+					waitinput=[" ","r","R","s","S","c","C"];
+					clearInterval(id);
+				} else {
+					switch(k+"t") {
+						case " t":
+							lvl++;
+							mode=0;
+							break;
+						case "Rt":
+						case "rt":
+							mode=0;
+							break;
+						case "St":
+						case "st":
+							mode=6;
+							break;
+						//case "Ct":
+						//case "ct":
+						//	break;
+					}
 					document.getElementById("headerscore").style.display="none";
-					
-					document.getElementById("score").style.display="none";
-					document.getElementById("game").style.filter= "none";
-					score=[];
-					penalty=[];
-					if(k!="r") {
-						lvl++;
+					document.getElementById("score").style.display="none";					
+					k=false;
+				}
+			}
+			function loadSettings() {
+				if(k===false) {				
+					document.getElementById("settings").style.display="flex";
+					document.getElementById("headersettings").style.display="flex";
+					waitinput=["c","C","s","S"];
+					clearInterval(id);
+				} else {
+					document.getElementById("settings").style.display="none";
+					document.getElementById("headersettings").style.display="none";
+					if(k=="s" || k=="S") {
+						mode=page;
 					}
 					k=false;
-					mode++;
 				}
 			}
 		}
@@ -315,10 +349,14 @@
 		function keyPressed(key) {
 			if(key=="Escape") {
 				clearInterval(id);
-			} else if(waitinput) {
-				k=false;
-				id = setInterval(loop, 10);
-				waitinput=false;
+			} else if(waitinput!==false) {
+				for(var i=0;i<waitinput.length;i++) {
+					k=key;
+					if(k===waitinput[i]) {
+						id = setInterval(loop, 10);
+						waitinput=false;
+					}
+				}
 			} else {
 				k=key;
 			}
