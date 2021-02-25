@@ -183,7 +183,6 @@ function loop() {
 		document.getElementById("affiche").style.fontVariationSettings=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings;
 		document.getElementById("affiche").innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].innerHTML;
 		fout=searchFont(document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily);
-		document.getElementById("r").innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily;
 		prm=[];
 		fonttype=[];
 		var fontvar= document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings.split(", ")
@@ -357,8 +356,10 @@ function loop() {
 			} else if(k=="s" || k=="S") {
 				mode=6;
 			} else {
-				mode=0;
-				lvl=parseInt(k);
+				if (document.getElementsByClassName("elementmenu")[parseInt(k)].children[1].innerHTML!="locked") {
+					mode=0;
+					lvl=parseInt(k);
+				}
 			}
 			k=false;
 		}
