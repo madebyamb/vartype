@@ -308,8 +308,9 @@ function loop() {
 		document.getElementsByClassName("elementmenu")[lvl].children[0].style.visibility="visible";
 		document.getElementsByClassName("elementmenu")[lvl].children[0].innerHTML=Math.max(parseInt(document.getElementsByClassName("elementmenu")[lvl].children[0].innerHTML),totalscore)+"%";
 		document.getElementsByClassName("elementmenu")[lvl].children[1].style.fontFamily=document.getElementsByClassName("textpar")[lvl].children[0].style.fontFamily;
-		document.getElementsByClassName("elementmenu")[lvl].children[1].style.textDecoration="none";
+		document.getElementsByClassName("elementmenu")[lvl+1].children[1].style.textDecoration="none";
 		document.getElementsByClassName("elementmenu")[lvl].children[1].innerHTML=lvlname[lvl];
+		document.getElementsByClassName("elementmenu")[lvl+1].children[1].innerHTML="Next";
 	}
 	function waitscore() {
 		if(k===false) {
