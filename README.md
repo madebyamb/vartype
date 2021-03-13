@@ -8,6 +8,6 @@ If you would like us to use your font or propose any game/challenge/visual with 
 ambroise.nicolao@gmail.com
 
 Made by
-- Danny Lachcene
+- Danny Lahcene
 - Hyacinthe Nicolao
 - Ambroise Nicolao
