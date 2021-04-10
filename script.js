@@ -1,8 +1,8 @@
 var k=false;
 var id = setInterval(loop, 20);
-var touch=false,t=0,sldr,r,lvl=1,step=0,score=[],penalty=[],prm=[],str,mode=0,fonttype,vari=0,totalscore,waitinput=false,fontscore=[],page;
-var font=['RobotoMono','EBGaramond-VariableFont_wght','Quicksand-VariableFont_wght','Hagrid-Variable-trial','Minerale-variable-TRIAL','InterVar','Blacker-Sans-Variable-trial','GTFlexa','Compressa'];
-var lvlname=['RobotoMono','EBGaramond','Quicksand','Hagrid','Minérale','Inter','Blacker','GTFlexa','Compressa'];
+var touch=false,t=0,sldr,r,lvl=0,step=0,score=[],penalty=[],prm=[],str,mode=0,fonttype,vari=0,totalscore,waitinput=false,fontscore=[],page;
+var font=['RobotoMono','RobotoMono','EBGaramond-VariableFont_wght','Quicksand-VariableFont_wght','Hagrid-Variable-trial','Minerale-variable-TRIAL','InterVar','Blacker-Sans-Variable-trial','GTFlexa','Compressa'];
+var lvlname=['RobotoMono','RobotoMono','EBGaramond','Quicksand','Hagrid','Minérale','Inter','Blacker','GTFlexa','Compressa'];
 var fmin=[[100],[400],[300],[100] ,[0   ],[100,0  ],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
 var fmax=[[800],[800],[700],[1000],[1000],[900,-10],[499,1000],[200,800,100],[200,1000]];
 var fout;
@@ -23,7 +23,7 @@ function loop() {
 			break;
 		case 3:
 			continueLevel(lvl<4);
-			if(step==Math.min(lvl,4)) {
+			if(step==Math.max(1,Math.min(lvl,4))) {
 				mode++;
 				k=false;
 			}
@@ -74,7 +74,7 @@ function loop() {
 			document.getElementById("headerready").style.display="none";
 			document.getElementById("headerlevel").style.display="flex";
 			document.getElementById("headerlevel").children[0].children[0].innerHTML="Level "+lvl;
-			document.getElementById("headerlevel").children[0].children[1].innerHTML=0+"/"+Math.min(lvl,4);
+			document.getElementById("headerlevel").children[0].children[1].innerHTML=0+"/"+Math.max(1,Math.min(lvl,4));
 		}
 		if(k=="s" ||k=="S") {
 			document.getElementById("headerready").style.display="none";
@@ -249,7 +249,7 @@ function loop() {
 		fontscore=[];
 		vari=0;
 		t=-200;
-		document.getElementById("headerlevel").children[0].children[1].innerHTML=step+"/"+Math.min(lvl,4);
+		document.getElementById("headerlevel").children[0].children[1].innerHTML=step+"/"+Math.max(1,Math.min(lvl,4));
 	}
 	function advanceVarType() {
 		vari++;
@@ -276,7 +276,7 @@ function loop() {
 		document.getElementById("game").style.filter= "blur(8px)";
 		totalscore=0;
 		for(var i=0;i<4;i++) {
-			if(i<Math.min(lvl,4)) {
+			if(i<Math.max(1,Math.min(lvl,4))) {
 				document.getElementById("score").children[0].children[2].children[0].children[i].style.display="block";
 				document.getElementById("score").children[0].children[2].children[1].children[i].style.display="block";
 				document.getElementById("score").children[0].children[2].children[2].children[i].style.display="block";
