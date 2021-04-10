@@ -216,21 +216,25 @@ function loop() {
 		//Move Game
 		r=Math.floor(t/200);
 		sldr=-Math.cos(t/200*Math.PI)/2+.5;
-		var fontvariation="";
-		for(var i=0;i<fonttype.length;i++) {
-			fontvariation+=fonttype[i]+" ";
-			if(i<vari) {
-				fontvariation+=fontscore[i]*(fout[1][i]-fout[0][i])+fout[0][i];
-			} else if(i==vari) {
-				fontvariation+=sldr*(fout[1][i]-fout[0][i])+fout[0][i];
-			} else {
-				fontvariation+=fout[0][i];
+		if(flash==0) {
+			document.getElementById("affiche").style.fontWeight=10;
+		} else {
+			var fontvariation="";
+			for(var i=0;i<fonttype.length;i++) {
+				fontvariation+=fonttype[i]+" ";
+				if(i<vari) {
+					fontvariation+=fontscore[i]*(fout[1][i]-fout[0][i])+fout[0][i];
+				} else if(i==vari) {
+					fontvariation+=sldr*(fout[1][i]-fout[0][i])+fout[0][i];
+				} else {
+					fontvariation+=fout[0][i];
+				}
+				if(i!=fonttype.length-1) {
+					fontvariation+=", ";
+				}
 			}
-			if(i!=fonttype.length-1) {
-				fontvariation+=", ";
-			}
+			document.getElementById("affiche").style.fontVariationSettings=fontvariation;
 		}
-		document.getElementById("affiche").style.fontVariationSettings=fontvariation;
 		document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";	
 	}
 	function saveScore() {
