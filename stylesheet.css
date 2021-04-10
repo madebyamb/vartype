@@ -249,17 +249,17 @@ input[type=range] {
 @font-face {
   font-family: "Roboto";
   src: url("fonts/Roboto-Thin.ttf") format("truetype");
-  font-weight: light;
+  font-weight: 200;
 }
 @font-face {
   font-family: "Roboto";
   src: url("fonts/Roboto-Medium.ttf") format("truetype");
-  font-weight: normal;
+  font-weight: 400;
 }
 @font-face {
   font-family: "Roboto";
   src: url("fonts/Roboto-Black.ttf") format("truetype");
-  font-weight: bold;
+  font-weight: 600;
 }
 @font-face {
     font-family: "RobotoMono";
