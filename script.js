@@ -217,7 +217,7 @@ function loop() {
 		r=Math.floor(t/200);
 		sldr=-Math.cos(t/200*Math.PI)/2+.5;
 		if(flash==0) {
-			document.getElementById("affiche").style.fontWeight=sldr*(fout[0][1]-fout[0][0])+fout[0][0];
+			document.getElementById("affiche").style.fontWeight=sldr*(fout[1][0]-fout[0][0])+fout[0][0];
 		} else {
 			var fontvariation="";
 			for(var i=0;i<fonttype.length;i++) {
