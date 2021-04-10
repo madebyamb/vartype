@@ -1,8 +1,8 @@
 var k=false;
 var id = setInterval(loop, 20);
 var touch=false,t=0,sldr,r,lvl=0,step=0,score=[],penalty=[],prm=[],str,mode=0,fonttype,vari=0,totalscore,waitinput=false,fontscore=[],page;
-var font=['RobotoMono','RobotoMono','EBGaramond-VariableFont_wght','Quicksand-VariableFont_wght','Hagrid-Variable-trial','Minerale-variable-TRIAL','InterVar','Blacker-Sans-Variable-trial','GTFlexa','Compressa'];
-var lvlname=['RobotoMono','RobotoMono','EBGaramond','Quicksand','Hagrid','Minérale','Inter','Blacker','GTFlexa','Compressa'];
+var font=['Roboto','RobotoMono','EBGaramond-VariableFont_wght','Quicksand-VariableFont_wght','Hagrid-Variable-trial','Minerale-variable-TRIAL','InterVar','Blacker-Sans-Variable-trial','GTFlexa','Compressa'];
+var lvlname=['Roboto','RobotoMono','EBGaramond','Quicksand','Hagrid','Minérale','Inter','Blacker','GTFlexa','Compressa'];
 var fmin=[[100],[400],[300],[100] ,[0   ],[100,0  ],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
 var fmax=[[800],[800],[700],[1000],[1000],[900,-10],[499,1000],[200,800,100],[200,1000]];
 var fout;
