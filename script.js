@@ -143,7 +143,7 @@ function loop() {
 				mode++;
 				t=0;
 			} else {
-				moveGame();
+				moveGame(flash);
 			}
 		}
 	}
@@ -212,7 +212,7 @@ function loop() {
 		}
 		k=false;
 	}
-	function moveGame() {
+	function moveGame(flash) {
 		//Move Game
 		r=Math.floor(t/200);
 		sldr=-Math.cos(t/200*Math.PI)/2+.5;
