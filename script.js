@@ -63,6 +63,7 @@ function loop() {
 		}
 		document.getElementById("spacebar").style.opacity=1;
 		document.getElementById("helper").style.display="none";
+		document.getElementById("helper0").style.display="none";
 	}
 	function ready() {
 		t++;
@@ -165,6 +166,9 @@ function loop() {
 	function startLevel(flash) {
 		score.push([]);
 		penalty.push(0);
+		if(flash==0) {
+			document.getElementById("helper").style.display="block";
+		}
 		if(flash==1) {
 			document.getElementById("helper").style.display="block";
 		}
