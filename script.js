@@ -241,9 +241,9 @@ function loop() {
 	}
 	function resetAdvance() {
 		//Reset & Advance Game
-		document.getElementsByClassName("slider")[0].style.opacity=0.5;
-		document.getElementById("affiche").style.opacity=0.5;
-		document.getElementById("spacebar").style.opacity=0.5;
+		document.getElementsByClassName("slider")[0].style.opacity=0.3;
+		document.getElementById("affiche").style.opacity=0.3;
+		document.getElementById("spacebar").style.opacity=0.3;
 		document.getElementsByClassName("textpar")[lvl].children[step].style.display="none";
 		step++;
 		fontscore=[];
