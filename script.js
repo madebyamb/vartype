@@ -3,7 +3,7 @@ var id = setInterval(loop, 20);
 var touch=false,t=0,sldr,r,lvl=0,step=0,score=[],penalty=[],prm=[],str,mode=0,fonttype,vari=0,totalscore,waitinput=false,fontscore=[],page;
 var font=['Roboto','RobotoMono','EBGaramond-VariableFont_wght','Quicksand-VariableFont_wght','Hagrid-Variable-trial','Minerale-variable-TRIAL','InterVar','Blacker-Sans-Variable-trial','GTFlexa','Compressa'];
 var lvlname=['Roboto','RobotoMono','EBGaramond','Quicksand','Hagrid','Minérale','Inter','Blacker','GTFlexa','Compressa'];
-var fmin=[[0  ],[100],[400],[300],[100] ,[0   ],[100,0  ],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
+var fmin=[[300],[100],[400],[300],[100] ,[0   ],[100,0  ],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
 var fmax=[[600],[800],[800],[700],[1000],[1000],[900,-10],[499,1000],[200,800,100],[200,1000]];
 var fout;
 function loop() {
@@ -217,7 +217,7 @@ function loop() {
 		r=Math.floor(t/200);
 		sldr=-Math.cos(t/200*Math.PI)/2+.5;
 		if(flash==0) {
-			document.getElementById("affiche").style.fontWeight=sldr*600;
+			document.getElementById("affiche").style.fontWeight=sldr*(fout[0][1]-fout[0][0])+fout[0][0];
 		} else {
 			var fontvariation="";
 			for(var i=0;i<fonttype.length;i++) {
