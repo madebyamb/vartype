@@ -167,7 +167,7 @@ function loop() {
 		score.push([]);
 		penalty.push(0);
 		if(flash==0) {
-			document.getElementById("helper").style.display="block";
+			document.getElementById("helper0").style.display="block";
 		}
 		if(flash==1) {
 			document.getElementById("helper").style.display="block";
