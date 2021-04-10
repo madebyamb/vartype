@@ -193,6 +193,9 @@ function loop() {
 		for(var i=0;i<fontvar.length;i++) {
 			fontvar[i]=fontvar[i].split(" ");
 		}
+		if(lvl==0) {
+			fontvar=[['weight',400]]
+		}
 		for(var i=0;i<fontvar.length;i++) {
 			fonttype.push(fontvar[i][0]);
 			prm.push((fontvar[i][1]-fout[0][i])/(fout[1][i]-fout[0][i]));
@@ -239,8 +242,13 @@ function loop() {
 	}
 	function saveScore() {
 		//Save Score/Input Time
-		fontscore.push(sldr);
-		score[step].push(1-Math.abs(sldr-prm[vari]));//1-Math.abs(sldr-prm[0])
+		if(lvl==0) {
+			fontscore.push(parseInt(sldr*3)/3);
+			score[step].push(1-Math.abs(parseInt(sldr*3)/3-prm[vari]));//1-Math.abs(sldr-prm[0])
+		} else {
+			fontscore.push(sldr);
+			score[step].push(1-Math.abs(sldr-prm[vari]));//1-Math.abs(sldr-prm[0])
+		}
 		penalty[step]+=r;
 		k=false;
 		if(vari==fonttype.length-1) {
