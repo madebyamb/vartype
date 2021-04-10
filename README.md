@@ -1,5 +1,5 @@
 # Var-Type
-Variable + typography -> Var-Type
+Variable + Typography
 
 This project is a first game realised around the theme of variable fonts. We created this to promote the fantastic work of Variable types!
 We do not own any right on the fonts displayed as this is non commercial school project.
