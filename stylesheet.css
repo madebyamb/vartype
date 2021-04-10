@@ -247,42 +247,57 @@ input[type=range] {
   
 /*fontfaces*/
 @font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Thin.ttf") format("truetype");
+  font-weight: light;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Black.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
     font-family: "RobotoMono";
-    src: url("fonts/RobotoMono-VariableFont_wght.ttf");
+    src: url("fonts/RobotoMono-VariableFont_wght.ttf") format("truetype");
 }
 @font-face {
     font-family: "RobotoMono-Italic";
-    src: url("fonts/RobotoMono-Italic-VariableFont_wght.ttf");
+    src: url("fonts/RobotoMono-Italic-VariableFont_wght.ttf") format("truetype");
 }
 @font-face {
     font-family: "Compressa";
-    src: url("fonts/Compressa-MICRO-GX-It.ttf");
+    src: url("fonts/Compressa-MICRO-GX-It.ttf") format("truetype");
 }
 @font-face {
     font-family: "EBGaramond-VariableFont_wght";
-    src: url("fonts/EBGaramond-VariableFont_wght.ttf");
+    src: url("fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
 }
 @font-face {
     font-family:"GTFlexa" ;
-    src: url("fonts/GT\ Flexa\ VAR\ Trial.ttf");
+    src: url("fonts/GT\ Flexa\ VAR\ Trial.ttf") format("truetype");
 }
 @font-face {
     font-family: "Hagrid-Variable-trial";
-    src: url("fonts/Hagrid-Variable-trial.ttf");
+    src: url("fonts/Hagrid-Variable-trial.ttf") format("truetype");
 }
 @font-face {
     font-family: "InterVar";
-    src: url("fonts/Inter-VariableFont_slnt\,wght.ttf");
+    src: url("fonts/Inter-VariableFont_slnt\,wght.ttf" format("truetype"));
 }
 @font-face {
-    font-family: "Minerale-variable-TRIAL" ;
-    src: url("fonts/Minerale-variable-TRIAL.ttf");
+    font-family: "Minerale-variable-TRIAL";
+    src: url("fonts/Minerale-variable-TRIAL.ttf") format("truetype");
 }
 @font-face {
-    font-family:"Quicksand-VariableFont_wght" ;
-    src: url("fonts/Quicksand-VariableFont_wght.ttf");
+    font-family:"Quicksand-VariableFont_wght";
+    src: url("fonts/Quicksand-VariableFont_wght.ttf") format("truetype");
 }
 @font-face {
     font-family: "Blacker-Sans-Variable-trial";
-    src: url("fonts/Blacker-Sans-Variable-trial.ttf");
+    src: url("fonts/Blacker-Sans-Variable-trial.ttf") format("truetype");
 }
