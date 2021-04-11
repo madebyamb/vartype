@@ -6,7 +6,7 @@ var lvlname=['Roboto','RobotoMono','EBGaramond','Quicksand','Hagrid','Minérale'
 var fmin=[[300],[100],[400],[300],[100] ,[0   ],[100,0  ],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
 var fmax=[[600],[800],[800],[700],[1000],[1000],[900,-10],[499,1000],[200,800,100],[200,1000]];
 var rndword=['a','b','c','d']
-var fntchar=[['wght'],['wght'],['wght'],['wght'],['wght'],['wght'],['wght','slnt'],['wght','opsz'],['wdth','wght','ital'],['wdth','wght']]
+var fntchar=[["'wght'"],["'wght'"],["'wght'"],["'wght'"],["'wght'"],["'wght'"],["'wght'","'slnt'"],["'wght'","'opsz'"],["'wdth'","'wght'","'ital'"],["'wdth'","'wght'"]]
 var fout;
 function loop() {
 	switch(mode) {
@@ -185,6 +185,21 @@ function loop() {
 	}
 	function loadFontSettings() {
 		//Get Font settings 
+		if(lvl==10) {
+			var temp = Math.floor(Math.random()*(font.length-1)+1)
+			var temp2= searchFont(font[temp])
+			var str = "";
+			document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily = font[temp];
+			
+			for(var i=0;i<fntchar[temp].length;i++) {
+				str += fntchar[temp][i] + " " + Math.random()*(temp2[1][i]-temp2[0][i])+temp2[0][i] ;
+				if(i!=fntchar[temp].length-1) {
+					str += ", ";
+				}
+			}
+			document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings=str;
+			document.getElementsByClassName("textpar")[lvl].children[step].innerHTML = rndword[Math.floor(Math.random()*rndword.length)];
+		}
 		document.getElementById("affiche").style.fontFamily=document.getElementsByClassName("textpar")[lvl].children[step].style.fontFamily;
 		document.getElementById("affiche").style.fontVariationSettings=document.getElementsByClassName("textpar")[lvl].children[step].style.fontVariationSettings;
 		document.getElementById("affiche").innerHTML=document.getElementsByClassName("textpar")[lvl].children[step].innerHTML;
