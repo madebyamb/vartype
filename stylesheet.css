@@ -286,7 +286,7 @@ input[type=range] {
 }
 @font-face {
     font-family: "InterVar";
-    src: url("fonts/Inter-VariableFont_slnt\,wght.ttf" format("truetype"));
+    src: url("fonts/Inter-VariableFont_slnt,wght.ttf" format("truetype"));
 }
 @font-face {
     font-family: "Minerale-variable-TRIAL";
