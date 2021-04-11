@@ -6,6 +6,7 @@ var lvlname=['Roboto','RobotoMono','EBGaramond','Quicksand','Hagrid','Minérale'
 var fmin=[[300],[100],[400],[300],[100] ,[0   ],[100,0  ],[50 ,100 ],[0  ,100,0  ],[10 ,100 ]];
 var fmax=[[600],[800],[800],[700],[1000],[1000],[900,-10],[499,1000],[200,800,100],[200,1000]];
 var rndword=['a','b','c','d']
+var fntchar=[['wght'],['wght'],['wght'],['wght'],['wght'],['wght'],['wght','slnt'],['wght','opsz'],['wdth','wght','ital'],['wdth','wght']]
 var fout;
 function loop() {
 	switch(mode) {
