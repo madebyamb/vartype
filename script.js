@@ -56,7 +56,7 @@ function loop() {
 		document.getElementById("affiche").innerHTML="Ready?";
 		document.getElementById("affiche").style.opacity=1;
 		document.getElementsByClassName("slider")[0].style.opacity=1;
-		if(lvl==1) {
+		if(lvl==0) {
 			document.getElementById("spacebar").innerHTML="Touch the <strong>(screen)</strong><br>or Press <strong>(spacebar)</strong><br> to start";				
 		} else if(touch) {
 			document.getElementById("spacebar").innerHTML="Touch the <strong>(screen)</strong><br>to start";
