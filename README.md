@@ -13,3 +13,5 @@ Made by
 - Danny Lahcene
 - Hyacinthe Nicolao
 - Ambroise Nicolao
+
+<h2> How does it work? </h2>
