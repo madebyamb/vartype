@@ -55,7 +55,7 @@ function loop() {
 		document.getElementById("headerready").children[1].children[0].innerHTML="Level "+lvl;
 		document.getElementById("affiche").innerHTML="Ready?";
 		document.getElementById("affiche").style.opacity=1;
-		document.getElementsByClassName("slider")[0].style.opacity=1;
+		document.getElementById("slider").style.opacity=1;
 		if(lvl==0) {
 			document.getElementById("spacebar").innerHTML="Touch the <strong>(screen)</strong><br>or Press <strong>(spacebar)</strong><br> to start";				
 		} else if(touch) {
@@ -70,7 +70,7 @@ function loop() {
 	function ready() {
 		t++;
 		sldr=-Math.cos(t/200*Math.PI)/2+.5;
-		document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";
+		document.getElementById("slider").style.marginLeft=sldr*100+"%";
 		if(k===" ") {
 			mode++;
 			t=-200;
@@ -98,7 +98,7 @@ function loop() {
 				startLevel(flash);
 				loadFontSettings();
 				document.getElementById("affiche").style.opacity=1;
-				document.getElementsByClassName("slider")[0].style.opacity=0;
+				document.getElementById("slider").style.opacity=0;
 				k=false;
 				document.getElementById("spacebar").style.opacity=1;
 				if(touch) {
@@ -174,7 +174,7 @@ function loop() {
 		if(flash==1) {
 			document.getElementById("helper").style.display="block";
 		}
-		document.getElementsByClassName("slider")[0].style.opacity=0;
+		document.getElementById("slider").style.opacity=0;
 		if(touch) {
 			document.getElementById("spacebar").innerHTML="Click the <strong>(screen)</strong><br>to validate";
 		} else {
@@ -222,8 +222,8 @@ function loop() {
 	function startGame() {
 		//Start Game
 		document.getElementById("affiche").style.opacity=1;
-		document.getElementsByClassName("slider")[0].style.marginLeft=0+"%";
-		document.getElementsByClassName("slider")[0].style.opacity=1;
+		document.getElementById("slider").style.marginLeft=0+"%";
+		document.getElementById("slider").style.opacity=1;
 		document.getElementById("spacebar").style.opacity=1;
 		if(touch) {
 			document.getElementById("spacebar").innerHTML= "Click the <strong>(screen)</strong><br>to validate";
@@ -255,7 +255,7 @@ function loop() {
 			}
 			document.getElementById("affiche").style.fontVariationSettings=fontvariation;
 		}
-		document.getElementsByClassName("slider")[0].style.marginLeft=sldr*100+"%";	
+		document.getElementById("slider").style.marginLeft=sldr*100+"%";	
 	}
 	function saveScore() {
 		//Save Score/Input Time
@@ -274,7 +274,7 @@ function loop() {
 	}
 	function resetAdvance() {
 		//Reset & Advance Game
-		document.getElementsByClassName("slider")[0].style.opacity=0.3;
+		document.getElementById("slider").style.opacity=0.3;
 		document.getElementById("affiche").style.opacity=0.3;
 		document.getElementById("spacebar").style.opacity=0.3;
 		document.getElementsByClassName("textpar")[lvl].children[step].style.display="none";
