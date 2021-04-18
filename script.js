@@ -427,7 +427,7 @@ function keyPressed(key) {
 		clearInterval(id);
 	} else if(waitinput!==false) {
 		for(var i=0;i<waitinput.length;i++) {
-			if(k===waitinput[i]) {
+			if(key===waitinput[i]) {
 				k=key;
 				id = setInterval(loop, 10);
 				waitinput=false;
