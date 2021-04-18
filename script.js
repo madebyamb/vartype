@@ -434,7 +434,9 @@ function keyPressed(key) {
 			}
 		}
 	} else {
-		k=key;
+		if(k===false) {
+			k=key;
+		}
 	}
 }
 function touchScreen() {
