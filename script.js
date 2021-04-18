@@ -380,7 +380,7 @@ function loop() {
 		if(k===false){
 			document.getElementById("menu").style.display="flex";
 			document.getElementById("headercollection").style.display="flex";
-			waitinput=["s","S","c","C","1","2","3","4","5","6","7","8","9"]
+			waitinput=["s","S","c","C","0","1","2","3","4","5","6","7","8","9","10"]
 			clearInterval(id);
 		} else {
 			document.getElementById("menu").style.display="none";
