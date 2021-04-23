@@ -15,3 +15,5 @@ Made by
 - Ambroise Nicolao
 
 <h2> How does it work? </h2>
+
+<h2> Screens <h2>
