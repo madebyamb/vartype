@@ -14,6 +14,9 @@ Made by
 - Hyacinthe Nicolao
 - Ambroise Nicolao
 
-<h2> How does it work? </h2>
+<h2>How does it work? </h2>
 
-<h2> Screens <h2>
+<h2>Screens </h2>
+  
+  <h2>Ressources</h2>
+https://abcdinamo.com/typefaces/ginto
